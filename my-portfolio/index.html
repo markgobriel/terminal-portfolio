@@ -1,13 +1,138 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + React</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+<head>
+  <meta charset="UTF-8">
+  <title>Split Screen Terminal</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="app-container">
+  <!-- Left: Terminal Panel -->
+  <div class="terminal-section">
+    <div id="terminalOutput" class="terminal-output">
+      Welcome to my portfolio!<br>
+      Available commands: help, open projectX, clear, exit...
+    </div>
+    <form class="terminal-input" id="terminalForm">
+      <span class="prompt">markgobriel-portfolio$</span>
+      <input class="input-field" id="terminalInput" type="text" placeholder="Type a command...">
+    </form>
+  </div>
+
+  <!-- Right: Info Panel -->
+  <div class="info-section" id="infoPanel">
+    <h2>Quick Links</h2>
+    <ul style="list-style: none; padding: 0;">
+      <li><a href="https://github.com/yourUsername" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+      <li><a href="https://linkedin.com/in/yourProfile" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+      <li><a href="mailto:youremail@example.com">Email</a></li>
+    </ul>
+
+    <h2 style="margin-top: 2rem;">Project Info</h2>
+    <p>If you type <code>open projectX</code> in the terminal, we can dynamically update this area with details.</p>
+  </div>
+</div>
+
+<!-- JavaScript Logic -->
+<script>
+  // Example: minimal command handling logic
+  const terminalForm = document.getElementById('terminalForm');
+  const terminalInput = document.getElementById('terminalInput');
+  const terminalOutput = document.getElementById('terminalOutput');
+  const infoPanel = document.getElementById('infoPanel');
+
+  // Example projects data
+  const projectsData = {
+    "projectX": {
+      name: "projectX",
+      description: "A cutting-edge app that does X, built with React and Node.js.",
+      repo: "https://github.com/yourUsername/projectX"
+    },
+    "cool-tool": {
+      name: "cool-tool",
+      description: "A CLI tool that automates tasks.",
+      repo: "https://github.com/yourUsername/cool-tool"
+    }
+  };
+
+  terminalForm.addEventListener('submit', (e) => {
+    e.preventDefault();  // prevent form submission
+    const command = terminalInput.value.trim();
+    if (!command) return;
+
+    // Show the typed command in terminal
+    writeToTerminal(`markgobriel-portfolio$ ${command}`);
+
+    handleCommand(command);
+    terminalInput.value = ''; // clear the input
+  });
+
+  function handleCommand(command) {
+    const args = command.split(' ');
+    const mainCmd = args[0];
+    const arg = args[1] || '';
+
+    switch (mainCmd) {
+      case 'help':
+        writeToTerminal("Commands: help, open <projectName>, clear, exit");
+        break;
+
+      case 'open':
+        // open <projectName>
+        if (arg) {
+          openProject(arg);
+        } else {
+          writeToTerminal("Usage: open <projectName>");
+        }
+        break;
+
+      case 'clear':
+        terminalOutput.innerHTML = ''; // clear the terminal
+        break;
+
+      case 'exit':
+        writeToTerminal("Exiting. Goodbye!");
+        // Optionally disable input
+        terminalInput.disabled = true;
+        break;
+
+      default:
+        if (command.length > 0) {
+          writeToTerminal(`Command not found: ${command}`);
+        }
+    }
+  }
+
+  function openProject(projectName) {
+    const project = projectsData[projectName];
+    if (project) {
+      writeToTerminal(`Opening ${projectName}...`);
+      updateInfoPanel(project);
+    } else {
+      writeToTerminal(`Project "${projectName}" not found. Try "open projectX"`);
+    }
+  }
+
+  function writeToTerminal(text) {
+    terminalOutput.innerHTML += text + '\n';
+    terminalOutput.scrollTop = terminalOutput.scrollHeight; // auto-scroll to bottom
+  }
+
+  function updateInfoPanel(project) {
+    // Overwrite the info panel with the project's details
+    infoPanel.innerHTML = `
+      <h2>${project.name}</h2>
+      <p>${project.description}</p>
+      <p><strong>GitHub Repo:</strong> <a href="${project.repo}" target="_blank" rel="noopener noreferrer">${project.repo}</a></p>
+      <hr>
+      <h2>Quick Links</h2>
+      <ul style="list-style:none; padding:0;">
+        <li><a href="https://github.com/yourUsername" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+        <li><a href="https://linkedin.com/in/yourProfile" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+        <li><a href="mailto:youremail@example.com">Email</a></li>
+      </ul>
+    `;
+  }
+</script>
+</body>
 </html>
