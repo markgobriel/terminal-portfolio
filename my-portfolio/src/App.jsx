@@ -1,22 +1,22 @@
 // src/App.jsx
 import React, { useState } from "react";
-import TerminalPanel from "./components/Terminal";
+import Terminal from "./components/Terminal";
 import InfoPanel from "./components/InfoPanel";
-import "./App.css"; // We'll define some simple styling here
 
 function App() {
-  const [activeProject, setActiveProject] = useState(null);
+  // State for right panel content (could also store commands / project data here)
+  const [infoContent, setInfoContent] = useState(<InfoPanel />);
 
   return (
     <div className="app-container">
-      {/* Left side terminal */}
-      <div className="terminal-section">
-        <TerminalPanel setActiveProject={setActiveProject} />
+      {/* LEFT: Terminal */}
+      <div className="left-panel">
+        <Terminal setInfoContent={setInfoContent} />
       </div>
 
-      {/* Right side info panel */}
-      <div className="info-section">
-        <InfoPanel activeProject={activeProject} />
+      {/* RIGHT: Info Panel */}
+      <div className="right-panel">
+        {infoContent}
       </div>
     </div>
   );

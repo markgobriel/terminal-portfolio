@@ -1,36 +1,29 @@
 // src/components/InfoPanel.jsx
 import React from "react";
+import "./InfoPanel.css";
 
-const InfoPanel = ({ activeProject }) => {
-  if (!activeProject) {
-    return (
-      <div style={{ padding: "1rem" }}>
-        <h2>Quick Links</h2>
-        <ul style={{ listStyle: "none", padding: 0 }}>
-          <li><a href="https://github.com/yourUsername" target="_blank" rel="noopener noreferrer">GitHub</a></li>
-          <li><a href="https://linkedin.com/in/yourProfile" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
-          <li><a href="mailto:youremail@example.com">Email</a></li>
-        </ul>
-      </div>
-    );
-  }
-
-  // If we have an activeProject, display its details
+export default function InfoPanel() {
   return (
-    <div style={{ padding: "1rem" }}>
-      <h2>{activeProject.name}</h2>
-      <p>{activeProject.description}</p>
-      {activeProject.repo && (
-        <p>
-          <strong>GitHub Repo:</strong>{" "}
-          <a href={activeProject.repo} target="_blank" rel="noopener noreferrer">
-            {activeProject.repo}
+    <div>
+      <h2>Quick Links</h2>
+      <ul style={{ listStyle: "none", padding: 0 }}>
+        <li>
+          <a href="https://github.com/yourUsername" target="_blank" rel="noopener noreferrer">
+            GitHub
           </a>
-        </p>
-      )}
-      {/* Add more fields like images, screenshots, etc. */}
+        </li>
+        <li>
+          <a href="https://linkedin.com/in/yourProfile" target="_blank" rel="noopener noreferrer">
+            LinkedIn
+          </a>
+        </li>
+        <li>
+          <a href="mailto:yourEmail@example.com">Email</a>
+        </li>
+      </ul>
+      <p style={{ marginTop: "1rem" }}>
+        Try commands like <code>cd projects</code> or <code>nano resume.pdf</code> in the terminal on the left!
+      </p>
     </div>
   );
-};
-
-export default InfoPanel;
+}
