@@ -1,0 +1,41 @@
+.work-card {
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 18px;
+  background: #fff;
+  display: grid;
+  gap: 10px;
+}
+
+.work-card__title {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  font-weight: 500;
+}
+
+.work-card__title span {
+  font-size: 12px;
+  letter-spacing: 0.16em;
+  color: var(--muted);
+}
+
+.work-card__description {
+  margin: 0;
+}
+
+.stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.stack span {
+  border: 1px solid var(--line);
+  padding: 4px 8px;
+  border-radius: 999px;
+  background: var(--paper);
+}

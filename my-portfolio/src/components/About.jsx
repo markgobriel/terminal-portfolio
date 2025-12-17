@@ -1,0 +1,23 @@
+import "./About.css";
+
+function About({ paragraphs, status, focusList }) {
+  return (
+    <section className="panel about panel--delay-1">
+      <h2>about</h2>
+      {paragraphs.map((text, index) => (
+        <p key={`${text.slice(0, 12)}-${index}`}>{text}</p>
+      ))}
+      <div className="signature">
+        <span className="pulse" aria-hidden="true"></span>
+        {status}
+      </div>
+      <div className="focus-list">
+        {focusList.map((item) => (
+          <span key={item}>{item}</span>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+export default About;

@@ -1,0 +1,123 @@
+.masthead {
+  display: grid;
+  grid-template-columns: minmax(280px, 1.4fr) minmax(220px, 0.9fr);
+  gap: 40px;
+  align-items: end;
+  padding-bottom: 32px;
+  border-bottom: 1px solid var(--line);
+}
+
+.masthead__intro {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.masthead__side {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 20px;
+}
+
+.eyebrow {
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  color: var(--accent);
+  margin: 0;
+}
+
+.masthead h1 {
+  font-size: clamp(3rem, 6vw, 4.8rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+  margin: 0;
+}
+
+.tagline {
+  margin: 0;
+  color: var(--muted);
+  max-width: 520px;
+  font-size: 1.05rem;
+}
+
+.portrait-frame {
+  width: min(220px, 100%);
+  aspect-ratio: 1 / 1;
+  border-radius: 18px;
+  border: 1px solid var(--line);
+  overflow: hidden;
+  background: linear-gradient(145deg, rgba(91, 75, 255, 0.2), transparent 60%),
+    radial-gradient(circle at 20% 20%, rgba(83, 169, 255, 0.25), transparent 70%),
+    #f9f8ff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.portrait-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: saturate(0.95) contrast(1.05);
+}
+
+.portrait-placeholder {
+  font-size: 12px;
+  letter-spacing: 0.28em;
+  text-transform: lowercase;
+  color: var(--muted);
+}
+
+.meta {
+  display: grid;
+  gap: 12px;
+  font-size: 14px;
+  width: 100%;
+}
+
+.meta-item {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.meta-item:last-child {
+  border-bottom: none;
+}
+
+.label {
+  color: var(--muted);
+}
+
+.value {
+  text-align: right;
+  font-weight: 500;
+}
+
+@media (max-width: 960px) {
+  .masthead {
+    grid-template-columns: 1fr;
+  }
+
+  .masthead__side {
+    align-items: flex-start;
+  }
+
+  .meta-item {
+    justify-content: flex-start;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .value {
+    text-align: left;
+  }
+
+  .portrait-frame {
+    width: min(240px, 100%);
+  }
+}
