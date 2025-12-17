@@ -117,7 +117,6 @@ const portfolio = {
       { name: "HTML", iconId: "Html5Original" },
       { name: "CSS", iconId: "Css3Original" },
       { name: "JavaScript", iconId: "JavascriptOriginal" },
-      { name: "Liquid" },
     ],
     frameworks: [
       { name: "React", iconId: "ReactOriginal" },
