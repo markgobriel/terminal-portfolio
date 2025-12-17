@@ -1,10 +1,18 @@
 .work-card {
-  border: 1px solid var(--line);
+  --panel-bg: #fff;
   border-radius: 14px;
   padding: 18px;
-  background: #fff;
   display: grid;
   gap: 10px;
+  position: relative;
+  overflow: hidden;
+  background:
+    linear-gradient(var(--panel-bg), var(--panel-bg)) padding-box,
+    linear-gradient(135deg, rgba(91, 75, 255, 0.55), rgba(83, 169, 255, 0.45), rgba(91, 75, 255, 0.55)) border-box;
+  border: 1px solid transparent;
+  background-size: auto, 200% 200%;
+  background-position: center, 0% 100%;
+  transition: background-position 0.6s ease, transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .work-card__title {
@@ -15,10 +23,21 @@
   font-weight: 500;
 }
 
-.work-card__title span {
-  font-size: 12px;
-  letter-spacing: 0.16em;
+.work-card__link {
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  border: 1px solid var(--line);
+  display: grid;
+  place-items: center;
   color: var(--muted);
+  transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+}
+
+.work-card__link:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+  background: var(--accent-soft);
 }
 
 .work-card__description {
@@ -38,4 +57,9 @@
   padding: 4px 8px;
   border-radius: 999px;
   background: var(--paper);
+}
+.work-card:hover {
+  background-position: center, 100% 0%;
+  box-shadow: 0 16px 38px rgba(20, 20, 39, 0.12);
+  transform: translateY(-2px);
 }

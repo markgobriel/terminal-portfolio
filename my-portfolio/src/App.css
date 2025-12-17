@@ -12,23 +12,32 @@
 
 .app-grid {
   display: grid;
-  grid-template-columns: minmax(260px, 1fr) minmax(300px, 1.2fr);
+  grid-template-columns: repeat(2, minmax(280px, 1fr));
   grid-template-areas:
-    "about work"
-    "notes work"
+    "about projects"
+    "education projects"
+    "experience projects"
+    "notes projects"
+    "skills skills"
     "contact contact";
-  gap: 36px;
+  gap: 32px;
 }
 
 .panel {
-  background: rgba(255, 255, 255, 0.78);
-  border: 1px solid var(--line);
+  --panel-bg: rgba(255, 255, 255, 0.78);
+  background:
+    linear-gradient(var(--panel-bg), var(--panel-bg)) padding-box,
+    linear-gradient(135deg, rgba(91, 75, 255, 0.55), rgba(83, 169, 255, 0.45), rgba(91, 75, 255, 0.55)) border-box;
+  border: 1px solid transparent;
   border-radius: 16px;
   padding: 28px 28px 32px;
   display: flex;
   flex-direction: column;
   gap: 16px;
   animation: float-in 0.9s cubic-bezier(0.2, 0.6, 0.2, 1) both;
+  background-size: auto, 200% 200%;
+  background-position: center, 0% 100%;
+  transition: background-position 0.6s ease, box-shadow 0.3s ease, transform 0.2s ease;
 }
 
 .panel--delay-1 {
@@ -52,15 +61,27 @@
 }
 
 .work {
-  grid-area: work;
+  grid-area: projects;
 }
 
 .notes {
   grid-area: notes;
 }
 
+.education {
+  grid-area: education;
+}
+
+.experience {
+  grid-area: experience;
+}
+
 .contact {
   grid-area: contact;
+}
+
+.skills {
+  grid-area: skills;
 }
 
 .app-shell h2 {
@@ -93,6 +114,12 @@
   }
 }
 
+.panel:hover {
+  background-position: center, 100% 0%;
+  box-shadow: 0 18px 38px rgba(20, 20, 39, 0.12);
+  transform: translateY(-2px);
+}
+
 @media (max-width: 960px) {
   .app-shell {
     padding: 64px 6vw 84px;
@@ -102,8 +129,11 @@
     grid-template-columns: 1fr;
     grid-template-areas:
       "about"
-      "work"
+      "education"
+      "experience"
+      "projects"
       "notes"
+      "skills"
       "contact";
   }
 }

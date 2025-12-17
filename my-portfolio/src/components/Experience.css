@@ -1,0 +1,57 @@
+.exp-list {
+  display: grid;
+  gap: 12px;
+}
+
+.exp-card {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 16px;
+  background: #fff;
+  display: grid;
+  gap: 10px;
+}
+
+.exp-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: baseline;
+  flex-wrap: wrap;
+}
+
+.exp-role {
+  font-weight: 600;
+}
+
+.exp-org {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.exp-meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 6px;
+  color: var(--muted);
+  font-size: 12px;
+  letter-spacing: 0.05em;
+}
+
+.exp-date {
+  text-transform: lowercase;
+}
+
+.exp-card ul {
+  margin: 0;
+  padding-left: 18px;
+  display: grid;
+  gap: 6px;
+  color: var(--ink);
+  font-size: 14px;
+}
+
+.exp-card li {
+  line-height: 1.5;
+}

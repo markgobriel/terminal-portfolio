@@ -1,0 +1,41 @@
+.education .edu-list {
+  display: grid;
+  gap: 12px;
+}
+
+.edu-card {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 16px;
+  background: #fff;
+  display: grid;
+  gap: 8px;
+}
+
+.edu-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: baseline;
+}
+
+.edu-school {
+  font-weight: 600;
+}
+
+.edu-date {
+  color: var(--muted);
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: lowercase;
+}
+
+.edu-program {
+  font-size: 14px;
+}
+
+.edu-details {
+  margin: 0;
+  color: var(--muted);
+  font-size: 14px;
+}
