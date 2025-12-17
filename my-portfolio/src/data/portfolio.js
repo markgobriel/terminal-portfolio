@@ -160,6 +160,7 @@ const portfolio = {
       label: "resume",
       value: "resume.pdf",
       href: "/resume.pdf",
+      external: true,
     },
   ],
   footer: {

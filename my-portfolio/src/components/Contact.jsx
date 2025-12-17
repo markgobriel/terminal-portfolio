@@ -8,7 +8,9 @@ function Contact({ items }) {
         {items.map((item) => (
           <div className="contact-line" key={item.label}>
             <span>{item.label}</span>
-            <a href={item.href}>{item.value}</a>
+            <a href={item.href} target="_blank" rel="noreferrer">
+              {item.value}
+            </a>
           </div>
         ))}
       </div>
