@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import "./Masthead.css";
 
-function Masthead({ name, tagline, meta, portrait, onNameHover }) {
+function Masthead({ name, tagline, meta, portrait, resumeHref, onNameHover }) {
   const [hasFinePointer, setHasFinePointer] = useState(true);
 
   useEffect(() => {
@@ -24,7 +24,14 @@ function Masthead({ name, tagline, meta, portrait, onNameHover }) {
         <h1 onMouseEnter={() => onNameHover?.(true)} onMouseLeave={() => onNameHover?.(false)}>
           {name}
         </h1>
-        <p className="tagline">{tagline}</p>
+        <p className="tagline" dangerouslySetInnerHTML={{ __html: tagline }} />
+        {resumeHref && (
+          <div className="masthead__actions">
+            <a className="resume-top" href={resumeHref} target="_blank" rel="noreferrer">
+              click here for the boring stuff (my resume)
+            </a>
+          </div>
+        )}
       </div>
       <div className="masthead__side">
         {hasPortrait && (

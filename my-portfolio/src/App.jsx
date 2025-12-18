@@ -15,6 +15,8 @@ import Cursor from "./components/Cursor";
 function App() {
   const [nameHover, setNameHover] = useState(false);
   const nameHoverImage = "https://i.giphy.com/media/3NtY188QaxDdC/giphy.gif";
+  const resumeHref =
+    portfolio.contact.find((c) => c.label === "resume")?.href || "/resume.pdf";
   const meta = [
     { label: "location", value: portfolio.location },
     { label: "focus", value: portfolio.focus },
@@ -29,6 +31,7 @@ function App() {
         tagline={portfolio.tagline}
         meta={meta}
         portrait={portfolio.portrait}
+        resumeHref={resumeHref}
         onNameHover={setNameHover}
       />
       <main className="app-grid">

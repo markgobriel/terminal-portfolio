@@ -1,7 +1,7 @@
 const portfolio = {
   name: "mark gobriel",
   tagline:
-    "computer science student at the university of toronto, aspiring to be a full-stack developer.",
+    'computer science student at the <a href="https://www.utoronto.ca" target="_blank" rel="noreferrer">university of toronto</a>, aspiring to be a full-stack developer.',
   portrait: {
     src: "/portrait.jpg",
     alt: "my portrait",
@@ -69,7 +69,7 @@ const portfolio = {
       type: "Java",
       description:
         "java-based othello with human vs human, human vs computer, and human vs random modes demonstrating oop and game logic.",
-      stack: ["Java"],
+      stack: ["Java", "Javadoc"],
       link: "https://github.com/markgobriel",
     },
     {

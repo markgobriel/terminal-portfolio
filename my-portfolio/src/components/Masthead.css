@@ -20,6 +20,37 @@
   gap: 12px;
 }
 
+.masthead__actions {
+  display: flex;
+  gap: 10px;
+}
+
+.resume-top {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  border-radius: 12px;
+  background:
+    linear-gradient(#fff, #fff) padding-box,
+    linear-gradient(135deg, rgba(91, 75, 255, 0.55), rgba(83, 169, 255, 0.45), rgba(91, 75, 255, 0.55))
+      border-box;
+  border: 1px solid transparent;
+  color: var(--ink);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  transition: background-position 0.5s ease, transform 0.2s ease, box-shadow 0.3s ease;
+  background-size: auto, 180% 180%;
+  background-position: center, 0% 100%;
+}
+
+.resume-top:hover {
+  background-position: center, 100% 0%;
+  transform: translateY(-1px);
+  box-shadow: 0 10px 20px rgba(20, 20, 39, 0.12);
+}
+
 .eyebrow {
   font-size: 12px;
   letter-spacing: 0.2em;
@@ -40,6 +71,12 @@
   color: var(--muted);
   max-width: 520px;
   font-size: 1.05rem;
+}
+
+.tagline a {
+  border-bottom: 1px solid var(--accent);
+  padding-bottom: 2px;
+  color: var(--accent);
 }
 
 .portrait-frame {
