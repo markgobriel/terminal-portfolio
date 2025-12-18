@@ -2,7 +2,7 @@ import "./Education.css";
 
 function Education({ items, id, onHoverChange }) {
   return (
-    <section className="panel education panel--delay-1" id={id}>
+    <section className="panel education panel--delay-1" id={id} data-fade>
       <h2>education</h2>
       <div className="edu-list">
         {items.map((item) => (
@@ -11,6 +11,7 @@ function Education({ items, id, onHoverChange }) {
             key={item.school}
             onMouseEnter={() => onHoverChange?.(true)}
             onMouseLeave={() => onHoverChange?.(false)}
+            data-fade
           >
             <div className="edu-header">
               <div className="edu-school">{item.school}</div>

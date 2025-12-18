@@ -39,3 +39,19 @@
   color: var(--muted);
   font-size: 14px;
 }
+
+@media (max-width: 640px) {
+  .edu-card {
+    padding: 14px;
+  }
+
+  .edu-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+
+  .edu-date {
+    font-size: 11px;
+  }
+}

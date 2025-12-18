@@ -55,3 +55,23 @@
 .exp-card li {
   line-height: 1.5;
 }
+
+@media (max-width: 640px) {
+  .exp-card {
+    padding: 14px;
+  }
+
+  .exp-top {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .exp-meta {
+    align-items: flex-start;
+  }
+
+  .exp-card ul {
+    padding-left: 16px;
+  }
+}

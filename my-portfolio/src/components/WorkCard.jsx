@@ -4,7 +4,7 @@ function WorkCard({ item }) {
   const hasLink = Boolean(item.link);
 
   return (
-    <article className="work-card">
+    <article className="work-card" data-fade>
       <div className="work-card__title">
         <div>{item.title}</div>
         {hasLink && (

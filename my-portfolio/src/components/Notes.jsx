@@ -2,13 +2,13 @@ import "./Notes.css";
 
 function Notes({ items, id }) {
   return (
-    <section className="panel certifications panel--delay-3" id={id}>
+    <section className="panel certifications panel--delay-3" id={id} data-fade>
       <h2>certifications</h2>
       <div className="cert-list">
         {items.map((note, index) => {
           const key = `${note.title}-${index}`;
           return (
-            <article className="cert-card" key={key}>
+            <article className="cert-card" key={key} data-fade>
               <div className="cert-card__header">
                 <div className="cert-institution">{note.institution}</div>
                 {note.href ? (

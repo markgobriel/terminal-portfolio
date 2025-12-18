@@ -83,14 +83,14 @@ function SkillIcon({ iconId, iconComponent, iconImg, name }) {
 
 function Skills({ items, id }) {
   return (
-    <section className="panel skills panel--delay-4" id={id}>
+    <section className="panel skills panel--delay-4" id={id} data-fade>
       <h2>skills</h2>
       <div className="skill-groups">
         {Object.entries(items).map(([group, list]) => {
           const heading =
             group === "databases / orm" ? "databases / orm" : group;
           return (
-            <div className="skill-group" key={group} id={group}>
+            <div className="skill-group" key={group} id={group} data-fade>
               <div className="skill-group__title">{heading}</div>
               <div className="skills-grid">
                 {list.map((skill) => (

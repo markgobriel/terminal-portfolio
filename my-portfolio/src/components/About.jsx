@@ -2,7 +2,7 @@ import "./About.css";
 
 function About({ paragraphs, status, focusList, id }) {
   return (
-    <section className="panel about panel--delay-1" id={id}>
+    <section className="panel about panel--delay-1" id={id} data-fade>
       <h2>about</h2>
       {paragraphs.map((text, index) => (
         <p key={`${text.slice(0, 12)}-${index}`}>{text}</p>

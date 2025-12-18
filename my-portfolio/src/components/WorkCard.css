@@ -63,3 +63,18 @@
   box-shadow: 0 18px 42px rgba(20, 20, 39, 0.16), 0 0 0 1px rgba(91, 75, 255, 0.14);
   transform: translateY(-2px);
 }
+
+@media (max-width: 640px) {
+  .work-card {
+    padding: 16px;
+  }
+
+  .work-card__title {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .work-card__link {
+    align-self: flex-start;
+  }
+}
