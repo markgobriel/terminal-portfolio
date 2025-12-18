@@ -15,7 +15,7 @@ const portfolio = {
     "when i am not coding (because i touch grass), i am either weight training, preparing for my next marathon, cooking a new high-protein recipe, or travelling.",
   ],
   status: "open to internships for summer 2026",
-  focusList: ["React", "Vite", "Node.js", "Python", "Figma", "PostgreSQL"],
+  focusList: ["React", "JavaScript", "Node.js", "Python", "Java"],
   education: [
     {
       school: "University of Toronto",
