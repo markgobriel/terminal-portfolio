@@ -1,5 +1,6 @@
 import "./App.css";
 import { useEffect, useRef, useState } from "react";
+import { Analytics } from "@vercel/analytics/react";
 import portfolio from "./data/portfolio";
 import Masthead from "./components/Masthead";
 import About from "./components/About";
@@ -133,6 +134,7 @@ function App() {
         onLangChange={setLang}
         navLabel={content.ui.nav.resume}
       />
+      <Analytics />
     </div>
   );
 }
