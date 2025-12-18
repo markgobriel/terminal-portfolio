@@ -127,6 +127,7 @@ const portfolio = {
         name: "REST APIs",
         iconImg: "https://www.opc-router.com/wp-content/uploads/2020/04/icon_rest_webservice_600x400px-300x200.png",
       },
+      { name: "NumPy", iconComponent: "numpy" },
       { name: "Pygame", iconImg: "https://www.pygame.org/ftp/pygame-head-party.png" },
     ],
     tools: [
