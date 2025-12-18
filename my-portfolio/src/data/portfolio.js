@@ -8,13 +8,13 @@ const portfolio = {
   },
   location: "Toronto, ON",
   focus: "full-stack development, web applications, ux design",
-  currently: "looking for 12-16 month internships starting may 2025",
+  currently: "looking for 12-16 month internships starting may 2026",
   about: [
     "as a full-stack developer, i am fully equipped to work on both back-end and front-end projects, shipping polished interfaces and reliable systems.",
     "my work moves between front-end architecture, apis, and data models, always tying code back to interaction.",
     "when i am not coding (because i touch grass), i am either weight training, preparing for my next marathon, cooking a new high-protein recipe, or travelling.",
   ],
-  status: "open to internships for summer 2025",
+  status: "open to internships for summer 2026",
   focusList: ["React", "Vite", "Node.js", "Python", "Figma", "PostgreSQL"],
   education: [
     {
