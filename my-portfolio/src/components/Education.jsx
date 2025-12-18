@@ -1,9 +1,9 @@
 import "./Education.css";
 
-function Education({ items, id, onHoverChange }) {
+function Education({ items, id, onHoverChange, title }) {
   return (
     <section className="panel education panel--delay-1" id={id} data-fade>
-      <h2>education</h2>
+      <h2>{title || "education"}</h2>
       <div className="edu-list">
         {items.map((item) => (
           <article

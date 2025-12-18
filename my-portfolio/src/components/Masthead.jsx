@@ -1,7 +1,17 @@
 import { useEffect, useState } from "react";
 import "./Masthead.css";
 
-function Masthead({ name, tagline, meta, portrait, resumeHref, onNameHover }) {
+function Masthead({
+  name,
+  tagline,
+  meta,
+  portrait,
+  resumeHref,
+  resumeLabel,
+  eyebrowLabel,
+  eyebrowTouchLabel,
+  onNameHover,
+}) {
   const [hasFinePointer, setHasFinePointer] = useState(true);
 
   useEffect(() => {
@@ -13,7 +23,7 @@ function Masthead({ name, tagline, meta, portrait, resumeHref, onNameHover }) {
     return () => mq.removeEventListener("change", update);
   }, []);
 
-  const label = hasFinePointer ? "hover over my name for a surprise ;)" : "portfolio";
+  const label = hasFinePointer ? eyebrowLabel : eyebrowTouchLabel || eyebrowLabel;
   const hasPortrait = Boolean(portrait?.src);
   const portraitAlt = portrait?.alt || `${name} portrait`;
 
@@ -28,7 +38,7 @@ function Masthead({ name, tagline, meta, portrait, resumeHref, onNameHover }) {
         {resumeHref && (
           <div className="masthead__actions">
             <a className="resume-top" href={resumeHref} target="_blank" rel="noreferrer">
-              click here for the boring stuff (my resume)
+              {resumeLabel || "resume"}
             </a>
           </div>
         )}

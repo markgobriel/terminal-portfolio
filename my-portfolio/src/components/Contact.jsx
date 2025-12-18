@@ -1,9 +1,9 @@
 import "./Contact.css";
 
-function Contact({ items, id }) {
+function Contact({ items, id, title }) {
   return (
     <section className="panel contact panel--delay-4" id={id} data-fade>
-      <h2>contact</h2>
+      <h2>{title || "contact"}</h2>
       <div className="links">
         {items.map((item) => (
           <div className="contact-line" key={item.label} data-fade>

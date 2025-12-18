@@ -1,9 +1,9 @@
 import "./Notes.css";
 
-function Notes({ items, id }) {
+function Notes({ items, id, title }) {
   return (
     <section className="panel certifications panel--delay-3" id={id} data-fade>
-      <h2>certifications</h2>
+      <h2>{title || "certifications"}</h2>
       <div className="cert-list">
         {items.map((note, index) => {
           const key = `${note.title}-${index}`;

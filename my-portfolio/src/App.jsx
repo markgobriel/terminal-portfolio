@@ -14,6 +14,7 @@ import Cursor from "./components/Cursor";
 import TopNav from "./components/TopNav";
 
 function App() {
+  const [lang, setLang] = useState("en");
   const [nameHover, setNameHover] = useState(false);
   const [eduHover, setEduHover] = useState(false);
   const [navVisible, setNavVisible] = useState(true);
@@ -21,23 +22,26 @@ function App() {
   const scrollTimeout = useRef(null);
   const nameHoverImage = "https://i.giphy.com/media/3NtY188QaxDdC/giphy.gif";
   const eduHoverImage = "https://upload.wikimedia.org/wikipedia/en/thumb/0/04/Utoronto_coa.svg/1200px-Utoronto_coa.svg.png";
+  const content = portfolio[lang] || portfolio.en;
   const resumeHref =
-    portfolio.contact.find((c) => c.label === "resume")?.href || "/resume.pdf";
+    content.contact.find((c) => c.label === (lang === "fr" ? "cv" : "resume"))?.href ||
+    content.contact.find((c) => c.label === "resume")?.href ||
+    "/resume.pdf";
   const meta = [
-    { label: "location", value: portfolio.location },
-    { label: "focus", value: portfolio.focus },
-    { label: "currently", value: portfolio.currently },
+    { label: content.ui.meta.location, value: content.location },
+    { label: content.ui.meta.focus, value: content.focus },
+    { label: content.ui.meta.currently, value: content.currently },
   ];
 
   const sections = [
-    { id: "about", label: "about" },
-    { id: "education", label: "education" },
-    { id: "experience", label: "experience" },
-    { id: "projects", label: "projects" },
-    { id: "certifications", label: "certifications" },
-    { id: "skills", label: "skills" },
-    { id: "contact", label: "contact" },
-    { href: resumeHref, label: "resume", external: true },
+    { id: "about", label: content.ui.nav.about },
+    { id: "education", label: content.ui.nav.education },
+    { id: "experience", label: content.ui.nav.experience },
+    { id: "projects", label: content.ui.nav.projects },
+    { id: "certifications", label: content.ui.nav.certifications },
+    { id: "skills", label: content.ui.nav.skills },
+    { id: "contact", label: content.ui.nav.contact },
+    { href: resumeHref, label: content.ui.nav.resume, external: true },
   ];
 
   useEffect(() => {
@@ -79,38 +83,50 @@ function App() {
       }
     );
 
-    elements.forEach((el) => observer.observe(el));
+    elements.forEach((el) => {
+      el.classList.remove("is-visible");
+      observer.observe(el);
+    });
 
     return () => observer.disconnect();
-  }, []);
+  }, [lang]);
 
   return (
     <div className="app-shell">
       <Cursor nameHover={nameHover} nameHoverImage={nameHoverImage} eduHover={eduHover} eduHoverImage={eduHoverImage} />
-      <TopNav sections={sections} visible={navVisible} />
+      <TopNav sections={sections} visible={navVisible} lang={lang} onLangChange={setLang} />
       <Masthead
-        name={portfolio.name}
-        tagline={portfolio.tagline}
+        name={content.name}
+        tagline={content.tagline}
         meta={meta}
-        portrait={portfolio.portrait}
+        portrait={content.portrait}
         resumeHref={resumeHref}
+        resumeLabel={content.ui.resumeTop}
+        eyebrowLabel={content.ui.eyebrow}
+        eyebrowTouchLabel={content.ui.eyebrowTouch}
         onNameHover={setNameHover}
       />
       <main className="app-grid">
         <About
-          paragraphs={portfolio.about}
-          status={portfolio.status}
-          focusList={portfolio.focusList}
+          paragraphs={content.about}
+          status={content.status}
+          focusList={content.focusList}
           id="about"
+          title={content.ui.headings.about}
         />
-        <Education items={portfolio.education} id="education" onHoverChange={setEduHover} />
-        <Experience items={portfolio.experience} id="experience" />
-        <Work items={portfolio.work} id="projects" />
-        <Notes items={portfolio.notes} id="certifications" />
-        <Skills items={portfolio.skills} id="skills" />
-        <Contact items={portfolio.contact} id="contact" />
+        <Education items={content.education} id="education" onHoverChange={setEduHover} title={content.ui.headings.education} />
+        <Experience items={content.experience} id="experience" title={content.ui.headings.experience} />
+        <Work items={content.work} id="projects" title={content.ui.headings.projects} />
+        <Notes items={content.notes} id="certifications" title={content.ui.headings.certifications} />
+        <Skills
+          items={content.skills}
+          id="skills"
+          title={content.ui.headings.skills}
+          groupLabels={content.ui.skillGroups}
+        />
+        <Contact items={content.contact} id="contact" title={content.ui.headings.contact} />
       </main>
-      <Footer updated={portfolio.footer.updated} motto={portfolio.footer.motto} />
+      <Footer updated={content.footer.updated} motto={content.footer.motto} />
     </div>
   );
 }

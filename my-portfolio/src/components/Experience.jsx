@@ -1,9 +1,9 @@
 import "./Experience.css";
 
-function Experience({ items, id }) {
+function Experience({ items, id, title }) {
   return (
     <section className="panel experience panel--delay-2" id={id} data-fade>
-      <h2>work experience</h2>
+      <h2>{title || "work experience"}</h2>
       <div className="exp-list">
         {items.map((item) => (
           <article className="exp-card" key={`${item.org}-${item.role}`} data-fade>
