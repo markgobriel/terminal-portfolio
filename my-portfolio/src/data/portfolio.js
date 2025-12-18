@@ -15,7 +15,7 @@ const portfolio = {
     "when i am not coding (because i touch grass), i am either weight training, preparing for my next marathon, cooking a new high-protein recipe, or travelling.",
   ],
   status: "open to internships for summer 2026",
-  focusList: ["React", "JavaScript", "Node.js", "Python", "Java"],
+  focusList: ["React", "JavaScript", "Java", "Python", "Node.js"],
   education: [
     {
       school: "University of Toronto",
@@ -146,7 +146,7 @@ const portfolio = {
   contact: [
     {
       label: "email",
-      value: "markgobriel@gmail.com",
+      value: "markgobriel[at]gmail.com",
       href: "mailto:markgobriel@gmail.com",
     },
     {

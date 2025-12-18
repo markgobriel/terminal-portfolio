@@ -1,4 +1,5 @@
 import "./App.css";
+import { useState } from "react";
 import portfolio from "./data/portfolio";
 import Masthead from "./components/Masthead";
 import About from "./components/About";
@@ -12,6 +13,8 @@ import Footer from "./components/Footer";
 import Cursor from "./components/Cursor";
 
 function App() {
+  const [nameHover, setNameHover] = useState(false);
+  const nameHoverImage = "https://i.giphy.com/media/3NtY188QaxDdC/giphy.gif";
   const meta = [
     { label: "location", value: portfolio.location },
     { label: "focus", value: portfolio.focus },
@@ -20,12 +23,13 @@ function App() {
 
   return (
     <div className="app-shell">
-      <Cursor />
+      <Cursor nameHover={nameHover} nameHoverImage={nameHoverImage} />
       <Masthead
         name={portfolio.name}
         tagline={portfolio.tagline}
         meta={meta}
         portrait={portfolio.portrait}
+        onNameHover={setNameHover}
       />
       <main className="app-grid">
         <About

@@ -5,7 +5,7 @@ import "./Cursor.css";
 const INTERACTIVE_SELECTOR =
   "a, button, .work-card, .skill-pill, .contact-line a, .work-card__link";
 
-function Cursor() {
+function Cursor({ nameHover, nameHoverImage }) {
   const prefersFinePointer =
     typeof window !== "undefined" && window.matchMedia("(pointer: fine)").matches;
 
@@ -70,13 +70,22 @@ function Cursor() {
     isInteractive ? "cursor--interactive" : "",
     isHovering ? "cursor--hover" : "",
     isSelecting ? "cursor--selecting" : "",
+    nameHover && nameHoverImage ? "cursor--portrait" : "",
   ]
     .filter(Boolean)
     .join(" ");
 
   return createPortal(
-    <div className={classes} style={{ transform: `translate3d(${pos.x + 6}px, ${pos.y + 6}px, 0)` }}>
+    <div className={classes} style={{ transform: `translate3d(${pos.x + 8}px, ${pos.y + 8}px, 0)` }}>
       <div className="cursor-ring" />
+      {nameHover && nameHoverImage ? (
+        <div
+          className="cursor-portrait"
+          style={{
+            backgroundImage: `url(${nameHoverImage})`,
+          }}
+        />
+      ) : null}
       <svg className="cursor-arrow" viewBox="0 0 24 24" role="presentation" aria-hidden="true">
         <path
           d="M7.5 16.5 16.5 7.5M9 7h8v8"

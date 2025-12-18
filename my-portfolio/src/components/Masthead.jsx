@@ -1,26 +1,37 @@
+import { useEffect, useState } from "react";
 import "./Masthead.css";
 
-function Masthead({ name, tagline, meta, portrait }) {
+function Masthead({ name, tagline, meta, portrait, onNameHover }) {
+  const [hasFinePointer, setHasFinePointer] = useState(true);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const mq = window.matchMedia("(pointer: fine)");
+    const update = () => setHasFinePointer(mq.matches);
+    update();
+    mq.addEventListener("change", update);
+    return () => mq.removeEventListener("change", update);
+  }, []);
+
+  const label = hasFinePointer ? "hover over my name for a surprise ;)" : "portfolio";
   const hasPortrait = Boolean(portrait?.src);
   const portraitAlt = portrait?.alt || `${name} portrait`;
 
   return (
     <header className="masthead">
       <div className="masthead__intro">
-        <p className="eyebrow">portfolio</p>
-        <h1>{name}</h1>
+        <p className="eyebrow">{label}</p>
+        <h1 onMouseEnter={() => onNameHover?.(true)} onMouseLeave={() => onNameHover?.(false)}>
+          {name}
+        </h1>
         <p className="tagline">{tagline}</p>
       </div>
       <div className="masthead__side">
-        <div className="portrait-frame">
-          {hasPortrait ? (
+        {hasPortrait && (
+          <div className="portrait-frame">
             <img src={portrait.src} alt={portraitAlt} />
-          ) : (
-            <div className="portrait-placeholder" aria-hidden="true">
-              portrait
-            </div>
-          )}
-        </div>
+          </div>
+        )}
         <div className="meta">
           {meta.map((item) => (
             <div className="meta-item" key={item.label}>
