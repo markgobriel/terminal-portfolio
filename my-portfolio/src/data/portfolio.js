@@ -13,7 +13,7 @@ const portfolio = {
       nav: {
         about: "about",
         education: "education",
-        experience: "work",
+        experience: "experience",
         projects: "projects",
         certifications: "certifications",
         skills: "skills",
