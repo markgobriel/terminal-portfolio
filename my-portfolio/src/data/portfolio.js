@@ -185,7 +185,6 @@ const portfolio = {
         { name: "Figma", iconId: "FigmaOriginal", level: "advanced" },
         { name: "JUnit", iconComponent: "junit", level: "intermediate" },
         { name: "Javadoc", iconId: "JavaOriginal", level: "intermediate" },
-        { name: "shadcn/ui", iconImg: "https://images.seeklogo.com/logo-png/51/1/shadcn-ui-logo-png_seeklogo-519786.png", level: "intermediate" },
       ],
       "databases / orm": [
         { name: "Prisma", iconId: "PrismaOriginal", level: "advanced" },
@@ -407,7 +406,6 @@ const portfolio = {
         { name: "Figma", iconId: "FigmaOriginal", level: "avancé" },
         { name: "JUnit", iconComponent: "junit", level: "intermédiaire" },
         { name: "Javadoc", iconId: "JavaOriginal", level: "intermédiaire" },
-        { name: "shadcn/ui", iconImg: "https://images.seeklogo.com/logo-png/51/1/shadcn-ui-logo-png_seeklogo-519786.png", level: "intermédiaire" },
       ],
       "databases / orm": [
         { name: "Prisma", iconId: "PrismaOriginal", level: "avancé" },
