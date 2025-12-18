@@ -1,8 +1,8 @@
 import "./Experience.css";
 
-function Experience({ items }) {
+function Experience({ items, id }) {
   return (
-    <section className="panel experience panel--delay-2">
+    <section className="panel experience panel--delay-2" id={id}>
       <h2>work experience</h2>
       <div className="exp-list">
         {items.map((item) => (

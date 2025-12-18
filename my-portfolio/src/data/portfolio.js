@@ -114,9 +114,11 @@ const portfolio = {
     },
   ],
   notes: [
-    "organizations: google developer student club, computer science student club, intramural soccer.",
-    "certification: university of colorado - software design as an element of the software development lifecycle.",
-    "some repositories are private - reach out if you want details.",
+    {
+      institution: "University of Colorado",
+      title: "software design as an element of the software development lifecycle",
+      href: "https://www.coursera.org/account/accomplishments/verify/495TOWMTJK3P",
+    },
   ],
   skills: {
     languages: [

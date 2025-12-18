@@ -81,27 +81,31 @@ function SkillIcon({ iconId, iconComponent, iconImg, name }) {
   );
 }
 
-function Skills({ items }) {
+function Skills({ items, id }) {
   return (
-    <section className="panel skills panel--delay-4">
+    <section className="panel skills panel--delay-4" id={id}>
       <h2>skills</h2>
       <div className="skill-groups">
-        {Object.entries(items).map(([group, list]) => (
-          <div className="skill-group" key={group}>
-            <div className="skill-group__title">{group}</div>
-            <div className="skills-grid">
-              {list.map((skill) => (
-                <SkillIcon
-                  key={skill.name}
-                  iconId={skill.iconId}
-                  iconComponent={skill.iconComponent}
-                  iconImg={skill.iconImg}
-                  name={skill.name}
-                />
-              ))}
+        {Object.entries(items).map(([group, list]) => {
+          const heading =
+            group === "databases / orm" ? "databases / orm" : group;
+          return (
+            <div className="skill-group" key={group} id={group}>
+              <div className="skill-group__title">{heading}</div>
+              <div className="skills-grid">
+                {list.map((skill) => (
+                  <SkillIcon
+                    key={skill.name}
+                    iconId={skill.iconId}
+                    iconComponent={skill.iconComponent}
+                    iconImg={skill.iconImg}
+                    name={skill.name}
+                  />
+                ))}
+              </div>
             </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
     </section>
   );

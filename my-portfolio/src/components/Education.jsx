@@ -1,8 +1,8 @@
 import "./Education.css";
 
-function Education({ items }) {
+function Education({ items, id }) {
   return (
-    <section className="panel education panel--delay-1">
+    <section className="panel education panel--delay-1" id={id}>
       <h2>education</h2>
       <div className="edu-list">
         {items.map((item) => (

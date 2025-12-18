@@ -17,7 +17,7 @@
     "about projects"
     "education projects"
     "experience projects"
-    "notes projects"
+    "certifications projects"
     "skills skills"
     "contact contact";
   gap: 32px;
@@ -38,6 +38,7 @@
   background-size: auto, 260% 260%;
   background-position: center, 0% 100%;
   transition: background-position 0.6s ease, box-shadow 0.3s ease, transform 0.2s ease;
+  scroll-margin-top: 120px;
 }
 
 .panel--delay-1 {
@@ -64,16 +65,16 @@
   grid-area: projects;
 }
 
-.notes {
-  grid-area: notes;
-}
-
 .education {
   grid-area: education;
 }
 
 .experience {
   grid-area: experience;
+}
+
+.certifications {
+  grid-area: certifications;
 }
 
 .contact {

@@ -1,9 +1,9 @@
 import "./Work.css";
 import WorkCard from "./WorkCard";
 
-function Work({ items }) {
+function Work({ items, id }) {
   return (
-    <section className="panel work panel--delay-2">
+    <section className="panel work panel--delay-2" id={id}>
       <h2>projects</h2>
       <div className="work-list">
         {items.map((item) => (
