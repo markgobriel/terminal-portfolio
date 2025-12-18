@@ -27,7 +27,7 @@
   --panel-bg: rgba(255, 255, 255, 0.78);
   background:
     linear-gradient(var(--panel-bg), var(--panel-bg)) padding-box,
-    linear-gradient(135deg, rgba(91, 75, 255, 0.55), rgba(83, 169, 255, 0.45), rgba(91, 75, 255, 0.55)) border-box;
+    linear-gradient(135deg, rgba(91, 75, 255, 0.7), rgba(83, 169, 255, 0.6), rgba(91, 75, 255, 0.7)) border-box;
   border: 1px solid transparent;
   border-radius: 16px;
   padding: 28px 28px 32px;
@@ -35,7 +35,7 @@
   flex-direction: column;
   gap: 16px;
   animation: float-in 0.9s cubic-bezier(0.2, 0.6, 0.2, 1) both;
-  background-size: auto, 200% 200%;
+  background-size: auto, 260% 260%;
   background-position: center, 0% 100%;
   transition: background-position 0.6s ease, box-shadow 0.3s ease, transform 0.2s ease;
 }
@@ -116,7 +116,7 @@
 
 .panel:hover {
   background-position: center, 100% 0%;
-  box-shadow: 0 18px 38px rgba(20, 20, 39, 0.12);
+  box-shadow: 0 20px 42px rgba(20, 20, 39, 0.16), 0 0 0 1px rgba(91, 75, 255, 0.14);
   transform: translateY(-2px);
 }
 
