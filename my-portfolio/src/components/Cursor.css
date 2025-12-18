@@ -79,4 +79,12 @@
   .cursor--portrait .cursor-portrait {
     display: block;
   }
+
+  .cursor-portrait--edu {
+    border-radius: 0;
+    box-shadow: none;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-color: transparent;
+  }
 }

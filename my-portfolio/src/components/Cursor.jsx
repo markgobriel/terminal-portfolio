@@ -68,6 +68,7 @@ function Cursor({ nameHover, nameHoverImage, eduHover, eduHoverImage }) {
   const usePortrait = (nameHover && nameHoverImage) || (eduHover && eduHoverImage);
   const portraitSrc = nameHover && nameHoverImage ? nameHoverImage : eduHoverImage;
   const portraitSize = usePortrait ? (eduHover ? 150 : 200) : undefined;
+  const portraitClasses = ["cursor-portrait", eduHover ? "cursor-portrait--edu" : ""].filter(Boolean).join(" ");
 
   const classes = [
     "cursor",
@@ -94,7 +95,7 @@ function Cursor({ nameHover, nameHoverImage, eduHover, eduHoverImage }) {
       />
       {usePortrait && portraitSrc ? (
         <div
-          className="cursor-portrait"
+          className={portraitClasses}
           style={{
             backgroundImage: `url(${portraitSrc})`,
             width: portraitSize ? `${portraitSize}px` : undefined,
