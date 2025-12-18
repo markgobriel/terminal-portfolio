@@ -35,13 +35,13 @@ function Masthead({
           {name}
         </h1>
         <p className="tagline" dangerouslySetInnerHTML={{ __html: tagline }} />
-        {resumeHref && (
+        {/* {resumeHref && (
           <div className="masthead__actions">
             <a className="resume-top" href={resumeHref} target="_blank" rel="noreferrer">
               {resumeLabel || "resume"}
             </a>
           </div>
-        )}
+        )} */}
       </div>
       <div className="masthead__side">
         {hasPortrait && (
