@@ -94,7 +94,7 @@ function App() {
   return (
     <div className="app-shell">
       <Cursor nameHover={nameHover} nameHoverImage={nameHoverImage} eduHover={eduHover} eduHoverImage={eduHoverImage} />
-      <TopNav sections={sections} visible={navVisible} lang={lang} onLangChange={setLang} />
+      <TopNav sections={sections} visible={navVisible} />
       <Masthead
         name={content.name}
         tagline={content.tagline}
@@ -126,7 +126,13 @@ function App() {
         />
         <Contact items={content.contact} id="contact" title={content.ui.headings.contact} />
       </main>
-      <Footer updated={content.footer.updated} motto={content.footer.motto} />
+      <Footer
+        updated={content.footer.updated}
+        motto={content.footer.motto}
+        lang={lang}
+        onLangChange={setLang}
+        navLabel={content.ui.nav.resume}
+      />
     </div>
   );
 }
