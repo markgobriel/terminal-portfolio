@@ -14,6 +14,7 @@ import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import Cursor from "./components/Cursor";
 import TopNav from "./components/TopNav";
+import BackToTop from "./components/BackToTop";
 
 function App() {
   const [lang, setLang] = useState("en");
@@ -94,50 +95,53 @@ function App() {
   }, [lang]);
 
   return (
-    <div className="app-shell">
-      <Cursor nameHover={nameHover} nameHoverImage={nameHoverImage} eduHover={eduHover} eduHoverImage={eduHoverImage} />
-      <TopNav sections={sections} visible={navVisible} />
-      <Masthead
-        name={content.name}
-        tagline={content.tagline}
-        meta={meta}
-        portrait={content.portrait}
-        resumeHref={resumeHref}
-        resumeLabel={content.ui.resumeTop}
-        eyebrowLabel={content.ui.eyebrow}
-        eyebrowTouchLabel={content.ui.eyebrowTouch}
-        onNameHover={setNameHover}
-      />
-      <main className="app-grid">
-        <About
-          paragraphs={content.about}
-          status={content.status}
-          focusList={content.focusList}
-          id="about"
-          title={content.ui.headings.about}
+    <>
+      <div className="app-shell">
+        <Cursor nameHover={nameHover} nameHoverImage={nameHoverImage} eduHover={eduHover} eduHoverImage={eduHoverImage} />
+        <TopNav sections={sections} visible={navVisible} />
+        <Masthead
+          name={content.name}
+          tagline={content.tagline}
+          meta={meta}
+          portrait={content.portrait}
+          resumeHref={resumeHref}
+          resumeLabel={content.ui.resumeTop}
+          eyebrowLabel={content.ui.eyebrow}
+          eyebrowTouchLabel={content.ui.eyebrowTouch}
+          onNameHover={setNameHover}
         />
-        <Education items={content.education} id="education" onHoverChange={setEduHover} title={content.ui.headings.education} />
-        <Experience items={content.experience} id="experience" title={content.ui.headings.experience} />
-        <Work items={content.work} id="projects" title={content.ui.headings.projects} />
-        <Notes items={content.notes} id="certifications" title={content.ui.headings.certifications} />
-        <Skills
-          items={content.skills}
-          id="skills"
-          title={content.ui.headings.skills}
-          groupLabels={content.ui.skillGroups}
+        <main className="app-grid">
+          <About
+            paragraphs={content.about}
+            status={content.status}
+            focusList={content.focusList}
+            id="about"
+            title={content.ui.headings.about}
+          />
+          <Education items={content.education} id="education" onHoverChange={setEduHover} title={content.ui.headings.education} />
+          <Experience items={content.experience} id="experience" title={content.ui.headings.experience} />
+          <Work items={content.work} id="projects" title={content.ui.headings.projects} />
+          <Notes items={content.notes} id="certifications" title={content.ui.headings.certifications} />
+          <Skills
+            items={content.skills}
+            id="skills"
+            title={content.ui.headings.skills}
+            groupLabels={content.ui.skillGroups}
+          />
+          <Contact items={content.contact} id="contact" title={content.ui.headings.contact} />
+        </main>
+        <Footer
+          updated={content.footer.updated}
+          motto={content.footer.motto}
+          lang={lang}
+          onLangChange={setLang}
+          navLabel={content.ui.nav.resume}
         />
-        <Contact items={content.contact} id="contact" title={content.ui.headings.contact} />
-      </main>
-      <Footer
-        updated={content.footer.updated}
-        motto={content.footer.motto}
-        lang={lang}
-        onLangChange={setLang}
-        navLabel={content.ui.nav.resume}
-      />
-      <Analytics />
-      <SpeedInsights />
-    </div>
+        <Analytics />
+        <SpeedInsights />
+      </div>
+      <BackToTop />
+    </>
   );
 }
 
