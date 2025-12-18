@@ -104,6 +104,14 @@ const portfolio = {
       stack: ["Python"],
       link: "https://github.com/markgobriel",
     },
+    {
+      title: "mysh",
+      type: "C",
+      description:
+        "a custom linux shell written in c that supports cd, ls, pwd, background processes, and job control.",
+      stack: ["C"],
+      link: "https://github.com/markgobriel",
+    },
   ],
   notes: [
     "organizations: google developer student club, computer science student club, intramural soccer.",
@@ -117,6 +125,7 @@ const portfolio = {
       { name: "HTML", iconId: "Html5Original" },
       { name: "CSS", iconId: "Css3Original" },
       { name: "JavaScript", iconId: "JavascriptOriginal" },
+      { name: "C", iconImg: "https://upload.wikimedia.org/wikipedia/commons/1/18/C_Programming_Language.svg" },
     ],
     frameworks: [
       { name: "React", iconId: "ReactOriginal" },
