@@ -5,7 +5,7 @@ import "./Cursor.css";
 const INTERACTIVE_SELECTOR =
   "a, button, .work-card, .skill-pill, .contact-line a, .work-card__link";
 
-function Cursor({ nameHover, nameHoverImage }) {
+function Cursor({ nameHover, nameHoverImage, eduHover, eduHoverImage }) {
   const prefersFinePointer =
     typeof window !== "undefined" && window.matchMedia("(pointer: fine)").matches;
 
@@ -65,24 +65,40 @@ function Cursor({ nameHover, nameHoverImage }) {
 
   if (!prefersFinePointer) return null;
 
+  const usePortrait = (nameHover && nameHoverImage) || (eduHover && eduHoverImage);
+  const portraitSrc = nameHover && nameHoverImage ? nameHoverImage : eduHoverImage;
+  const portraitSize = usePortrait ? (eduHover ? 150 : 200) : undefined;
+
   const classes = [
     "cursor",
     isInteractive ? "cursor--interactive" : "",
     isHovering ? "cursor--hover" : "",
     isSelecting ? "cursor--selecting" : "",
-    nameHover && nameHoverImage ? "cursor--portrait" : "",
+    usePortrait ? "cursor--portrait" : "",
   ]
     .filter(Boolean)
     .join(" ");
 
   return createPortal(
-    <div className={classes} style={{ transform: `translate3d(${pos.x + 8}px, ${pos.y + 8}px, 0)` }}>
-      <div className="cursor-ring" />
-      {nameHover && nameHoverImage ? (
+    <div
+      className={classes}
+      style={{
+        transform: `translate3d(${pos.x + 8}px, ${pos.y + 8}px, 0)`,
+        width: usePortrait ? `${portraitSize}px` : undefined,
+        height: usePortrait ? `${portraitSize}px` : undefined,
+      }}
+    >
+      <div
+        className="cursor-ring"
+        style={usePortrait ? { opacity: 0, display: "none" } : undefined}
+      />
+      {usePortrait && portraitSrc ? (
         <div
           className="cursor-portrait"
           style={{
-            backgroundImage: `url(${nameHoverImage})`,
+            backgroundImage: `url(${portraitSrc})`,
+            width: portraitSize ? `${portraitSize}px` : undefined,
+            height: portraitSize ? `${portraitSize}px` : undefined,
           }}
         />
       ) : null}

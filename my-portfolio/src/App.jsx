@@ -15,10 +15,12 @@ import TopNav from "./components/TopNav";
 
 function App() {
   const [nameHover, setNameHover] = useState(false);
+  const [eduHover, setEduHover] = useState(false);
   const [navVisible, setNavVisible] = useState(true);
   const lastScroll = useRef(0);
   const scrollTimeout = useRef(null);
   const nameHoverImage = "https://i.giphy.com/media/3NtY188QaxDdC/giphy.gif";
+  const eduHoverImage = "https://upload.wikimedia.org/wikipedia/en/thumb/0/04/Utoronto_coa.svg/1200px-Utoronto_coa.svg.png";
   const resumeHref =
     portfolio.contact.find((c) => c.label === "resume")?.href || "/resume.pdf";
   const meta = [
@@ -60,7 +62,7 @@ function App() {
 
   return (
     <div className="app-shell">
-      <Cursor nameHover={nameHover} nameHoverImage={nameHoverImage} />
+      <Cursor nameHover={nameHover} nameHoverImage={nameHoverImage} eduHover={eduHover} eduHoverImage={eduHoverImage} />
       <TopNav sections={sections} visible={navVisible} />
       <Masthead
         name={portfolio.name}
@@ -77,7 +79,7 @@ function App() {
           focusList={portfolio.focusList}
           id="about"
         />
-        <Education items={portfolio.education} id="education" />
+        <Education items={portfolio.education} id="education" onHoverChange={setEduHover} />
         <Experience items={portfolio.experience} id="experience" />
         <Work items={portfolio.work} id="projects" />
         <Notes items={portfolio.notes} id="certifications" />
