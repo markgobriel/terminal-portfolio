@@ -1,6 +1,6 @@
 .skills-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  display: flex;
+  flex-wrap: wrap;
   gap: 12px;
 }
 
@@ -51,7 +51,8 @@
   overflow: hidden;
 }
 
-.skill-icon svg {
+.skill-icon svg,
+.skill-icon img {
   width: 100%;
   height: 100%;
   display: block;
@@ -84,6 +85,6 @@
 
 @media (max-width: 600px) {
   .skills-grid {
-    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    justify-content: flex-start;
   }
 }
