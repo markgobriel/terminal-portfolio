@@ -23,7 +23,7 @@
   padding: 8px 12px;
   background:
     linear-gradient(#fff, #fff) padding-box,
-    linear-gradient(135deg, rgba(91, 75, 255, 0.7), rgba(83, 169, 255, 0.55), rgba(91, 75, 255, 0.7))
+    linear-gradient(135deg, rgba(20, 20, 20, 0.18), rgba(80, 80, 80, 0.12), rgba(20, 20, 20, 0.18))
       border-box;
   border: 1px solid transparent;
   font-size: 14px;

@@ -12,13 +12,13 @@
 
 :root {
   color-scheme: light;
-  --paper: #f4f2ff;
-  --paper-strong: #ebe7ff;
-  --ink: #141427;
-  --muted: #5b5b79;
-  --line: #d6d1f2;
-  --accent: #5b4bff;
-  --accent-soft: #d9d5ff;
+  --paper: #f7f7f7;
+  --paper-strong: #efefef;
+  --ink: #121212;
+  --muted: #5a5a5a;
+  --line: #d8d8d8;
+  --accent: #141414;
+  --accent-soft: #e5e5e5;
 }
 
 * {
@@ -44,8 +44,8 @@ body::before {
   content: "";
   position: fixed;
   inset: 0;
-  background-image: radial-gradient(rgba(91, 75, 255, 0.18) 1px, transparent 1px),
-    radial-gradient(rgba(83, 169, 255, 0.12) 1px, transparent 1px);
+  background-image: radial-gradient(rgba(0, 0, 0, 0.08) 1px, transparent 1px),
+    radial-gradient(rgba(0, 0, 0, 0.05) 1px, transparent 1px);
   background-size: 32px 32px, 40px 40px;
   background-position: 0 0, 12px 12px;
   background-color: var(--paper);
@@ -72,7 +72,8 @@ a:hover {
 }
 
 ::selection {
-  background: var(--accent-soft);
+  background: #111;
+  color: #f7f7f7;
 }
 
 img {

@@ -86,6 +86,22 @@
   color: var(--muted);
   max-width: 520px;
   font-size: 1.05rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px;
+}
+
+.tagline-wrapper {
+  position: relative;
+}
+
+.tagline-placeholder {
+  position: absolute;
+  inset: 0;
+  visibility: hidden;
+  pointer-events: none;
+  white-space: normal;
 }
 
 .tagline a {
@@ -99,6 +115,35 @@
   font-family: inherit;
   font-weight: 700;
   letter-spacing: 0;
+}
+
+.typewriter {
+  position: relative;
+}
+
+.typewriter-caret {
+  width: 8px;
+  height: 1.2em;
+  background: var(--ink);
+  display: inline-block;
+  vertical-align: bottom;
+  animation: caret-blink 1s steps(2, start) infinite;
+  margin-left: 2px;
+}
+
+.typewriter.is-typing .typewriter-caret {
+  opacity: 1;
+}
+
+@keyframes caret-blink {
+  0%,
+  50% {
+    opacity: 1;
+  }
+  50.01%,
+  100% {
+    opacity: 0;
+  }
 }
 
 .portrait-frame {

@@ -101,13 +101,14 @@ function App() {
         <Cursor nameHover={nameHover} nameHoverImage={nameHoverImage} eduHover={eduHover} eduHoverImage={eduHoverImage} />
         <TopNav sections={sections} visible={navVisible} />
         <Masthead
-          name={content.name}
-          tagline={content.tagline}
-          meta={meta}
-          portrait={content.portrait}
-          resumeHref={resumeHref}
-          resumeLabel={content.ui.resumeTop}
-          eyebrowLabel={content.ui.eyebrow}
+        name={content.name}
+        tagline={content.tagline}
+        taglineTokens={content.taglineTokens}
+        meta={meta}
+        portrait={content.portrait}
+        resumeHref={resumeHref}
+        resumeLabel={content.ui.resumeTop}
+        eyebrowLabel={content.ui.eyebrow}
           eyebrowTouchLabel={content.ui.eyebrowTouch}
           onNameHover={setNameHover}
         />

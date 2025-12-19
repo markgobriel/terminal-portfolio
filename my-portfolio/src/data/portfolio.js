@@ -39,6 +39,20 @@ const portfolio = {
     name: "mark gobriel",
     tagline:
       'computer science student at the <a class="serif-italic" href="https://www.utoronto.ca" target="_blank" rel="noreferrer">university of toronto</a>, aspiring to be a <span class="serif-italic">full-stack developer</span>.',
+    taglineTokens: [
+      { text: "computer" },
+      { text: "science" },
+      { text: "student" },
+      { text: "at" },
+      { text: "the" },
+      { text: "university of toronto", href: "https://www.utoronto.ca", external: true },
+      { text: "aspiring" },
+      { text: "to" },
+      { text: "be" },
+      { text: "a" },
+      { text: "full-stack" },
+      { text: "developer." },
+    ],
     portrait: {
       src: "/portrait.jpg",
       alt: "my portrait",
@@ -261,6 +275,17 @@ const portfolio = {
     name: "mark gobriel",
     tagline:
       'étudiant en informatique à l\'<a class="serif-italic" href="https://www.utoronto.ca" target="_blank" rel="noreferrer">université de toronto</a>, aspirant <span class="serif-italic">développeur full-stack</span>.',
+    taglineTokens: [
+      { text: "étudiant" },
+      { text: "en" },
+      { text: "informatique" },
+      { text: "à" },
+      { text: "l'" },
+      { text: "université de toronto", href: "https://www.utoronto.ca", external: true },
+      { text: "aspirant" },
+      { text: "développeur" },
+      { text: "full-stack." },
+    ],
     portrait: {
       src: "/portrait.jpg",
       alt: "mon portrait",

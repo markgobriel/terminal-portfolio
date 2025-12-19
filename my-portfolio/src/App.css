@@ -36,7 +36,7 @@
   --panel-bg: rgba(255, 255, 255, 0.78);
   background:
     linear-gradient(var(--panel-bg), var(--panel-bg)) padding-box,
-    linear-gradient(135deg, rgba(91, 75, 255, 0.7), rgba(83, 169, 255, 0.6), rgba(91, 75, 255, 0.7)) border-box;
+    linear-gradient(135deg, rgba(30, 30, 30, 0.2), rgba(80, 80, 80, 0.18), rgba(30, 30, 30, 0.2)) border-box;
   border: 1px solid transparent;
   border-radius: 16px;
   padding: 28px 28px 32px;
@@ -110,7 +110,7 @@
 
 .panel:hover {
   background-position: center, 100% 0%;
-  box-shadow: 0 20px 42px rgba(20, 20, 39, 0.16), 0 0 0 1px rgba(91, 75, 255, 0.14);
+  box-shadow: 0 20px 42px rgba(20, 20, 39, 0.1), 0 0 0 1px rgba(18, 18, 18, 0.14);
   transform: translateY(-2px);
 }
 
