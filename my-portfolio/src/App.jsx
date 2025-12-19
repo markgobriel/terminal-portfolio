@@ -37,6 +37,7 @@ function App() {
   ];
 
   const sections = [
+    { id: "home", label: content.ui.nav.home },
     { id: "about", label: content.ui.nav.about },
     { id: "education", label: content.ui.nav.education },
     { id: "experience", label: content.ui.nav.experience },

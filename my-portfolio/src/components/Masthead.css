@@ -2,9 +2,10 @@
   display: grid;
   grid-template-columns: minmax(280px, 1.4fr) minmax(220px, 0.9fr);
   gap: 40px;
-  align-items: end;
+  align-items: center;
   padding-bottom: 32px;
   border-bottom: 1px solid var(--line);
+  min-height: calc(100vh - 120px);
 }
 
 .masthead__intro {
@@ -60,11 +61,24 @@
 }
 
 .masthead h1 {
-  font-size: clamp(3rem, 6vw, 4.8rem);
+  font-size: clamp(3.6rem, 6.8vw, 5.6rem);
   font-weight: 900;
-  letter-spacing: -0.03em;
+  letter-spacing: -0.05em;
   line-height: 1.05;
   margin: 0;
+  font-family:
+    "Helvetica Neue Bold",
+    "HelveticaNeue-Bold",
+    "Helvetica Neue",
+    "Neue Haas Grotesk",
+    "Arial Black",
+    "Helvetica",
+    "Nimbus Sans",
+    "Liberation Sans",
+    Arial,
+    sans-serif;
+  font-style: normal;
+  font-variation-settings: "wght" 700;
 }
 
 .tagline {
@@ -78,6 +92,13 @@
   border-bottom: 1px solid var(--accent);
   padding-bottom: 2px;
   color: var(--accent);
+}
+
+.tagline .serif-italic,
+.tagline a.serif-italic {
+  font-family: inherit;
+  font-weight: 700;
+  letter-spacing: 0;
 }
 
 .portrait-frame {

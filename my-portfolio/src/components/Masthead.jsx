@@ -28,7 +28,7 @@ function Masthead({
   const portraitAlt = portrait?.alt || `${name} portrait`;
 
   return (
-    <header className="masthead">
+    <header className="masthead" id="home">
       <div className="masthead__intro">
         <p className="eyebrow">{label}</p>
         <h1 onMouseEnter={() => onNameHover?.(true)} onMouseLeave={() => onNameHover?.(false)}>
