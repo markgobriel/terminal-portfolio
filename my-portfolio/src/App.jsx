@@ -51,20 +51,23 @@ function App() {
   useEffect(() => {
     const handleScroll = () => {
       const y = window.scrollY || window.pageYOffset;
-      const directionUp = y < lastScroll.current;
-      if (directionUp || y < 40) {
-        setNavVisible(true);
-      } else if (y > 140) {
-        setNavVisible(false);
-      }
+      const delta = y - lastScroll.current;
+      const scrollingUp = delta < -6;
+      const scrollingDown = delta > 6;
+      const nearTop = y < 40;
+
+      setNavVisible((prev) => {
+        if (nearTop) return true;
+        if (scrollingUp) return true;
+        if (scrollingDown) return false;
+        return prev;
+      });
       lastScroll.current = y;
-      if (scrollTimeout.current) clearTimeout(scrollTimeout.current);
-      scrollTimeout.current = setTimeout(() => setNavVisible(true), 500);
     };
     window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
     return () => {
       window.removeEventListener("scroll", handleScroll);
-      if (scrollTimeout.current) clearTimeout(scrollTimeout.current);
     };
   }, []);
 

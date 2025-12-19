@@ -3,9 +3,10 @@
   grid-template-columns: minmax(280px, 1.4fr) minmax(220px, 0.9fr);
   gap: 40px;
   align-items: center;
-  padding-bottom: 32px;
+  padding-top: 0;
+  padding-bottom: 16px;
   border-bottom: 1px solid var(--line);
-  min-height: calc(100vh - 120px);
+  min-height: min(78vh, 680px);
 }
 
 .masthead__intro {

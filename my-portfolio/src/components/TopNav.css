@@ -1,11 +1,13 @@
 .top-nav {
-  position: fixed;
-  top: 20px;
-  left: 50%;
-  transform: translateX(-50%);
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
   z-index: 25;
   transition: opacity 0.45s ease, transform 0.45s ease;
   pointer-events: none;
+  display: flex;
+  justify-content: center;
 }
 
 .top-nav__bubble {
@@ -43,12 +45,12 @@
 
 .top-nav--hidden {
   opacity: 0;
-  transform: translate(-50%, -12px);
+  transform: translateY(-140%);
 }
 
 .top-nav--visible {
   opacity: 1;
-  transform: translate(-50%, 0);
+  transform: translateY(8px);
 }
 
 @media (max-width: 900px) {
