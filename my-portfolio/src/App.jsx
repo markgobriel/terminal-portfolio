@@ -97,11 +97,12 @@ function App() {
 
   return (
     <>
+      <div id="home" aria-hidden="true"></div>
       <div className="app-shell">
         <Cursor nameHover={nameHover} nameHoverImage={nameHoverImage} eduHover={eduHover} eduHoverImage={eduHoverImage} />
         <TopNav sections={sections} visible={navVisible} />
         <Masthead
-        name={content.name}
+          name={content.name}
         tagline={content.tagline}
         taglineTokens={content.taglineTokens}
         meta={meta}

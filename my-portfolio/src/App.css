@@ -34,19 +34,21 @@
 
 .panel {
   --panel-bg: rgba(255, 255, 255, 0.78);
+  position: relative;
   background:
     linear-gradient(var(--panel-bg), var(--panel-bg)) padding-box,
     linear-gradient(135deg, rgba(30, 30, 30, 0.2), rgba(80, 80, 80, 0.18), rgba(30, 30, 30, 0.2)) border-box;
   border: 1px solid transparent;
   border-radius: 16px;
-  padding: 28px 28px 32px;
+  padding: 44px 28px 32px;
+  margin-top: 30px;
   display: flex;
   flex-direction: column;
   gap: 16px;
   background-size: auto, 260% 260%;
   background-position: center, 0% 100%;
   transition: background-position 0.6s ease, box-shadow 0.3s ease, transform 0.2s ease;
-  scroll-margin-top: 120px;
+  scroll-margin-top: 140px;
 }
 
 .about {
@@ -78,12 +80,20 @@
 }
 
 .app-shell h2 {
-  font-size: 12px;
+  position: absolute;
+  top: -20px;
+  left: 6px;
+  font-size: 20px;
   letter-spacing: 0;
-  font-weight: 500;
+  font-weight: 900;
+  line-height: 1.1;
   margin: 0;
-  color: var(--muted);
-  font-weight: 700;
+  padding: 4px 10px;
+  color: var(--ink);
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  text-transform: lowercase;
 }
 
 @keyframes fade-in {
@@ -126,7 +136,8 @@
   }
 
   .panel {
-    padding: 22px;
+    padding: 36px 22px 26px;
+    margin-top: 26px;
   }
 }
 
@@ -145,7 +156,7 @@
   }
 
   .panel {
-    padding: 20px;
+    padding: 34px 20px 24px;
     border-radius: 14px;
     gap: 14px;
   }
