@@ -223,12 +223,12 @@ const portfolio = {
         value: "github.com/markgobriel",
         href: "https://github.com/markgobriel",
       },
-      {
-        label: "resume",
-        value: "resume.pdf",
-        href: "/resume.pdf",
-        external: true,
-      },
+    {
+      label: "resume",
+      value: "resume.pdf",
+      href: "/Mark_Gobriel_resume.pdf",
+      external: true,
+    },
     ],
     footer: {
       updated: "last updated december 2025",
