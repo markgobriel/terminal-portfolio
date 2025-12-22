@@ -22,11 +22,12 @@
 
 .exp-role {
   font-weight: 600;
+  font-size: 17px;
 }
 
 .exp-org {
   color: var(--muted);
-  font-size: 14px;
+  font-size: 15px;
 }
 
 .exp-meta {
@@ -35,7 +36,7 @@
   align-items: flex-end;
   gap: 6px;
   color: var(--muted);
-  font-size: 12px;
+  font-size: 14px;
   letter-spacing: 0.05em;
 }
 
@@ -49,7 +50,7 @@
   display: grid;
   gap: 6px;
   color: var(--ink);
-  font-size: 14px;
+  font-size: 15px;
 }
 
 .exp-card li {

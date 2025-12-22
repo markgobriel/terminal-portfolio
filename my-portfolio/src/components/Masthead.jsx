@@ -87,7 +87,11 @@ function Masthead({
     <header className="masthead" id="home">
       <div className="masthead__intro">
         <p className="eyebrow">{label}</p>
-        <h1 onMouseEnter={() => onNameHover?.(true)} onMouseLeave={() => onNameHover?.(false)}>
+        <h1
+          data-emoji="🪄"
+          onMouseEnter={() => onNameHover?.(true)}
+          onMouseLeave={() => onNameHover?.(false)}
+        >
           <span className="hero-line">
             {line1} <span className="hero-italic">{emphasis}</span>
           </span>

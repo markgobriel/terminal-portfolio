@@ -1,5 +1,5 @@
 import "./App.css";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/react";
 import portfolio from "./data/portfolio";
@@ -13,10 +13,14 @@ import Skills from "./components/Skills";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import Cursor from "./components/Cursor";
-import BackToTop from "./components/BackToTop";
+
+const detectLangFromPath = () => {
+  if (typeof window === "undefined") return "en";
+  return window.location.pathname.startsWith("/fr") ? "fr" : "en";
+};
 
 function App() {
-  const [lang, setLang] = useState("en");
+  const [lang, setLang] = useState(detectLangFromPath);
   const [nameHover, setNameHover] = useState(false);
   const [eduHover, setEduHover] = useState(false);
   const nameHoverImage = "https://i.giphy.com/media/3NtY188QaxDdC/giphy.gif";
@@ -51,6 +55,19 @@ function App() {
     if (item.id && item.emoji) acc[item.id] = item.emoji;
     return acc;
   }, {});
+  const sectionsAnchorRef = useRef(null);
+
+  const switchLanguage = (code) => {
+    if (code === lang) return;
+    setLang(code);
+    if (typeof window !== "undefined") {
+      const basePath = window.location.pathname.replace(/^\/(en|fr)/, "") || "/";
+      const search = window.location.search || "";
+      const hash = window.location.hash || "";
+      const newPath = `/${code}${basePath === "/" ? "" : basePath}${search}${hash}`;
+      window.location.assign(newPath);
+    }
+  };
 
   useEffect(() => {
     const elements = document.querySelectorAll("[data-fade]");
@@ -208,13 +225,12 @@ function App() {
           updated={content.footer.updated}
           motto={content.footer.motto}
           lang={lang}
-          onLangChange={setLang}
+          onLangChange={switchLanguage}
           navLabel={content.ui.nav.resume}
         />
         <Analytics />
         <SpeedInsights />
       </div>
-      <BackToTop />
     </>
   );
 }

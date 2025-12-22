@@ -68,17 +68,11 @@ function Cursor({ nameHover, nameHoverImage, eduHover, eduHoverImage }) {
 
   if (!prefersFinePointer) return null;
 
-  const usePortrait = (nameHover && nameHoverImage) || (eduHover && eduHoverImage);
-  const portraitSrc = nameHover && nameHoverImage ? nameHoverImage : eduHoverImage;
-  const portraitSize = usePortrait ? (eduHover ? 150 : 200) : undefined;
-  const portraitClasses = ["cursor-portrait", eduHover ? "cursor-portrait--edu" : ""].filter(Boolean).join(" ");
-
   const classes = [
     "cursor",
     isInteractive ? "cursor--interactive" : "",
     isHovering ? "cursor--hover" : "",
     isSelecting ? "cursor--selecting" : "",
-    usePortrait ? "cursor--portrait" : "",
   ]
     .filter(Boolean)
     .join(" ");
@@ -88,24 +82,9 @@ function Cursor({ nameHover, nameHoverImage, eduHover, eduHoverImage }) {
       className={classes}
       style={{
         transform: `translate3d(${pos.x + 8}px, ${pos.y + 8}px, 0)`,
-        width: usePortrait ? `${portraitSize}px` : undefined,
-        height: usePortrait ? `${portraitSize}px` : undefined,
       }}
     >
-      <div
-        className="cursor-ring"
-        style={usePortrait ? { opacity: 0, display: "none" } : undefined}
-      />
-      {usePortrait && portraitSrc ? (
-        <div
-          className={portraitClasses}
-          style={{
-            backgroundImage: `url(${portraitSrc})`,
-            width: portraitSize ? `${portraitSize}px` : undefined,
-            height: portraitSize ? `${portraitSize}px` : undefined,
-          }}
-        />
-      ) : null}
+      {!hoverEmoji && <div className="cursor-ring" />}
       {hoverEmoji ? (
         <span className="cursor-emoji" aria-hidden="true">
           {hoverEmoji}
