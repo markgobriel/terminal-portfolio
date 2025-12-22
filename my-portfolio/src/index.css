@@ -26,6 +26,15 @@ body {
   overflow-x: hidden;
 }
 
+/* Hide scrollbar (still scrollable) */
+* {
+  scrollbar-width: none;
+}
+
+*::-webkit-scrollbar {
+  display: none;
+}
+
 html {
   scroll-behavior: smooth;
 }
