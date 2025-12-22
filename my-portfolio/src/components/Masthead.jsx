@@ -3,6 +3,9 @@ import "./Masthead.css";
 
 function Masthead({
   name,
+  heroLine1,
+  heroLine2,
+  heroEmphasis,
   tagline,
   taglineTokens,
   meta,
@@ -12,6 +15,7 @@ function Masthead({
   eyebrowLabel,
   eyebrowTouchLabel,
   onNameHover,
+  onScrollToSections,
 }) {
   const [hasFinePointer, setHasFinePointer] = useState(true);
   const [typedCount, setTypedCount] = useState(0);
@@ -42,13 +46,14 @@ function Masthead({
   }, [taglineTokens]);
 
   const label = hasFinePointer ? eyebrowLabel : eyebrowTouchLabel || eyebrowLabel;
-  const hasPortrait = Boolean(portrait?.src);
-  const portraitAlt = portrait?.alt || `${name} portrait`;
+  const line1 = heroLine1 ?? "i like building";
+  const line2 = heroLine2 ?? "apps.";
+  const emphasis = heroEmphasis ?? "full stack";
 
   const renderTagline = () => {
     const hasTokens = Array.isArray(taglineTokens) && taglineTokens.length > 0;
     if (!hasTokens) {
-      return <p className="tagline" dangerouslySetInnerHTML={{ __html: tagline }} />;
+      return <p className="tagline tagline-inline" dangerouslySetInnerHTML={{ __html: tagline }} />;
     }
     const words = taglineTokens.slice(0, typedCount);
     const isTyping = typedCount < taglineTokens.length;
@@ -83,7 +88,10 @@ function Masthead({
       <div className="masthead__intro">
         <p className="eyebrow">{label}</p>
         <h1 onMouseEnter={() => onNameHover?.(true)} onMouseLeave={() => onNameHover?.(false)}>
-          {name}
+          <span className="hero-line">
+            {line1} <span className="hero-italic">{emphasis}</span>
+          </span>
+          <span className="hero-line">{line2}</span>
         </h1>
         {renderTagline()}
         {/* {resumeHref && (
@@ -95,11 +103,6 @@ function Masthead({
         )} */}
       </div>
       <div className="masthead__side">
-        {hasPortrait && (
-          <div className="portrait-frame">
-            <img src={portrait.src} alt={portraitAlt} />
-          </div>
-        )}
         <div className="meta">
           {meta.map((item) => (
             <div className="meta-item" key={item.label}>

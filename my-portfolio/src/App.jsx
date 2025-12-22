@@ -1,5 +1,5 @@
 import "./App.css";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/react";
 import portfolio from "./data/portfolio";
@@ -13,16 +13,12 @@ import Skills from "./components/Skills";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import Cursor from "./components/Cursor";
-import TopNav from "./components/TopNav";
 import BackToTop from "./components/BackToTop";
 
 function App() {
   const [lang, setLang] = useState("en");
   const [nameHover, setNameHover] = useState(false);
   const [eduHover, setEduHover] = useState(false);
-  const [navVisible, setNavVisible] = useState(true);
-  const lastScroll = useRef(0);
-  const scrollTimeout = useRef(null);
   const nameHoverImage = "https://i.giphy.com/media/3NtY188QaxDdC/giphy.gif";
   const eduHoverImage = "https://upload.wikimedia.org/wikipedia/en/thumb/0/04/Utoronto_coa.svg/1200px-Utoronto_coa.svg.png";
   const content = portfolio[lang] || portfolio.en;
@@ -35,41 +31,26 @@ function App() {
     { label: content.ui.meta.focus, value: content.focus },
     { label: content.ui.meta.currently, value: content.currently },
   ];
+  const sectionOrder = ["about", "experience", "education", "projects", "skills", "certifications", "contact"];
+  const [openSections, setOpenSections] = useState(() =>
+    sectionOrder.reduce((acc, id) => ({ ...acc, [id]: false }), {})
+  );
 
   const sections = [
-    { id: "home", label: content.ui.nav.home },
-    { id: "about", label: content.ui.nav.about },
-    { id: "education", label: content.ui.nav.education },
-    { id: "experience", label: content.ui.nav.experience },
-    { id: "projects", label: content.ui.nav.projects },
-    { id: "certifications", label: content.ui.nav.certifications },
-    { id: "skills", label: content.ui.nav.skills },
-    { id: "contact", label: content.ui.nav.contact },
-    { href: resumeHref, label: content.ui.nav.resume, external: true },
+    { id: "home", label: content.ui.nav.home, emoji: "🏠" },
+    { id: "about", label: content.ui.nav.about, emoji: "👤" },
+    { id: "experience", label: content.ui.nav.experience, emoji: "💼" },
+    { id: "education", label: content.ui.nav.education, emoji: "🎓" },
+    { id: "projects", label: content.ui.nav.projects, emoji: "🛠️" },
+    { id: "skills", label: content.ui.nav.skills, emoji: "🧠" },
+    { id: "certifications", label: content.ui.nav.certifications, emoji: "📜" },
+    { id: "contact", label: content.ui.nav.contact, emoji: "✉️" },
+    { href: resumeHref, label: content.ui.nav.resume, external: true, emoji: "📄" },
   ];
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const y = window.scrollY || window.pageYOffset;
-      const delta = y - lastScroll.current;
-      const scrollingUp = delta < -6;
-      const scrollingDown = delta > 6;
-      const nearTop = y < 40;
-
-      setNavVisible((prev) => {
-        if (nearTop) return true;
-        if (scrollingUp) return true;
-        if (scrollingDown) return false;
-        return prev;
-      });
-      lastScroll.current = y;
-    };
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    handleScroll();
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
+  const navEmojiMap = sections.reduce((acc, item) => {
+    if (item.id && item.emoji) acc[item.id] = item.emoji;
+    return acc;
+  }, {});
 
   useEffect(() => {
     const elements = document.querySelectorAll("[data-fade]");
@@ -98,43 +79,130 @@ function App() {
     return () => observer.disconnect();
   }, [lang]);
 
+  const toggleSection = (id) => {
+    setOpenSections((prev) => ({ ...prev, [id]: !prev[id] }));
+  };
+
+  const allOpen = sectionOrder.every((id) => openSections[id]);
+
+  const setAllSections = (value) => {
+    setOpenSections(sectionOrder.reduce((acc, id) => ({ ...acc, [id]: value }), {}));
+  };
+
+  const renderedSections = [
+    {
+      id: "about",
+      title: content.ui.headings.about,
+      body: (
+        <About
+          paragraphs={content.about}
+          status={content.status}
+          focusList={content.focusList}
+          id="about"
+          title={content.ui.headings.about}
+          portrait={content.portrait}
+        />
+      ),
+    },
+    {
+      id: "experience",
+      title: content.ui.headings.experience,
+      body: <Experience items={content.experience} id="experience" title={content.ui.headings.experience} />,
+    },
+    {
+      id: "education",
+      title: content.ui.headings.education,
+      body: (
+        <Education
+          items={content.education}
+          id="education"
+          onHoverChange={setEduHover}
+          title={content.ui.headings.education}
+        />
+      ),
+    },
+    {
+      id: "projects",
+      title: content.ui.headings.projects,
+      body: <Work items={content.work} id="projects" title={content.ui.headings.projects} />,
+    },
+    {
+      id: "skills",
+      title: content.ui.headings.skills,
+      body: (
+        <Skills
+          items={content.skills}
+          id="skills"
+          title={content.ui.headings.skills}
+          groupLabels={content.ui.skillGroups}
+        />
+      ),
+    },
+    {
+      id: "certifications",
+      title: content.ui.headings.certifications,
+      body: <Notes items={content.notes} id="certifications" title={content.ui.headings.certifications} />,
+    },
+    {
+      id: "contact",
+      title: content.ui.headings.contact,
+      body: <Contact items={content.contact} id="contact" title={content.ui.headings.contact} />,
+    },
+  ];
+
   return (
     <>
       <div id="home" aria-hidden="true"></div>
       <div className="app-shell">
         <Cursor nameHover={nameHover} nameHoverImage={nameHoverImage} eduHover={eduHover} eduHoverImage={eduHoverImage} />
-        <TopNav sections={sections} visible={navVisible} />
         <Masthead
           name={content.name}
-        tagline={content.tagline}
-        taglineTokens={content.taglineTokens}
-        meta={meta}
-        portrait={content.portrait}
-        resumeHref={resumeHref}
+          heroLine1={content.heroLine1}
+          heroLine2={content.heroLine2}
+          heroEmphasis={content.heroEmphasis}
+          tagline={content.tagline}
+          taglineTokens={content.taglineTokens}
+          meta={meta}
+          portrait={content.portrait}
+          resumeHref={resumeHref}
         resumeLabel={content.ui.resumeTop}
         eyebrowLabel={content.ui.eyebrow}
-          eyebrowTouchLabel={content.ui.eyebrowTouch}
-          onNameHover={setNameHover}
-        />
+        eyebrowTouchLabel={content.ui.eyebrowTouch}
+        onNameHover={setNameHover}
+      />
+        <div className="expand-bar">
+          <button className="expand-toggle" type="button" onClick={() => setAllSections(!allOpen)}>
+            {allOpen ? content.ui.collapseAll || "collapse all" : content.ui.expandAll || "expand all"}
+          </button>
+        </div>
         <main className="app-grid">
-          <About
-            paragraphs={content.about}
-            status={content.status}
-            focusList={content.focusList}
-            id="about"
-            title={content.ui.headings.about}
-          />
-          <Education items={content.education} id="education" onHoverChange={setEduHover} title={content.ui.headings.education} />
-          <Experience items={content.experience} id="experience" title={content.ui.headings.experience} />
-          <Work items={content.work} id="projects" title={content.ui.headings.projects} />
-          <Notes items={content.notes} id="certifications" title={content.ui.headings.certifications} />
-          <Skills
-            items={content.skills}
-            id="skills"
-            title={content.ui.headings.skills}
-            groupLabels={content.ui.skillGroups}
-          />
-          <Contact items={content.contact} id="contact" title={content.ui.headings.contact} />
+          {renderedSections.map((section) => (
+            <div className="section-block" id={section.id} key={section.id} data-section={section.id}>
+              <button
+                className="section-header"
+                onClick={() => toggleSection(section.id)}
+                aria-expanded={openSections[section.id]}
+                data-emoji={navEmojiMap[section.id] || undefined}
+              >
+                <span className="section-title">{section.title}</span>
+                <span className={`section-arrow ${openSections[section.id] ? "open" : ""}`} aria-hidden="true">
+                  <svg viewBox="0 0 24 24" role="presentation">
+                    <path
+                      d="M6 9.5 12 15l6-5.5"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="1.8"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                </span>
+              </button>
+              <div className={`section-body ${openSections[section.id] ? "open" : "closed"}`}>
+                {section.body}
+              </div>
+            </div>
+          ))}
         </main>
         <Footer
           updated={content.footer.updated}

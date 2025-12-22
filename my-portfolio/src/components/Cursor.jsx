@@ -12,6 +12,7 @@ function Cursor({ nameHover, nameHoverImage, eduHover, eduHoverImage }) {
   const [isInteractive, setIsInteractive] = useState(false);
   const [isHovering, setIsHovering] = useState(false);
   const [isSelecting, setIsSelecting] = useState(false);
+  const [hoverEmoji, setHoverEmoji] = useState(null);
   const [pos, setPos] = useState(() => {
     if (typeof window === "undefined") return { x: -9999, y: -9999 };
     return { x: window.innerWidth / 2, y: window.innerHeight / 2 };
@@ -30,6 +31,8 @@ function Cursor({ nameHover, nameHoverImage, eduHover, eduHoverImage }) {
       setIsHovering(true);
       const isLink = Boolean(event.target.closest(INTERACTIVE_SELECTOR));
       setIsInteractive(isLink);
+      const emojiTarget = event.target.closest("[data-emoji]");
+      setHoverEmoji(emojiTarget?.dataset?.emoji || null);
     };
 
     const handleScroll = () => {
@@ -44,8 +47,8 @@ function Cursor({ nameHover, nameHoverImage, eduHover, eduHoverImage }) {
     };
 
     const animate = () => {
-      current.current.x += (target.current.x - current.current.x) * 0.90;
-      current.current.y += (target.current.y - current.current.y) * 0.20;
+      current.current.x += (target.current.x - current.current.x) * 0.75;
+      current.current.y += (target.current.y - current.current.y) * 0.12;
       setPos({ x: current.current.x, y: current.current.y });
       rafRef.current = requestAnimationFrame(animate);
     };
@@ -103,16 +106,22 @@ function Cursor({ nameHover, nameHoverImage, eduHover, eduHoverImage }) {
           }}
         />
       ) : null}
-      <svg className="cursor-arrow" viewBox="0 0 24 24" role="presentation" aria-hidden="true">
-        <path
-          d="M7.5 16.5 16.5 7.5M9 7h8v8"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="1.6"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-      </svg>
+      {hoverEmoji ? (
+        <span className="cursor-emoji" aria-hidden="true">
+          {hoverEmoji}
+        </span>
+      ) : (
+        <svg className="cursor-arrow" viewBox="0 0 24 24" role="presentation" aria-hidden="true">
+          <path
+            d="M7.5 16.5 16.5 7.5M9 7h8v8"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1.6"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </svg>
+      )}
     </div>,
     document.body
   );

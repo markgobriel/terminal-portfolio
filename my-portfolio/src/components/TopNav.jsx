@@ -10,6 +10,7 @@ function TopNav({ sections, visible }) {
             href={item.href || `#${item.id}`}
             target={item.external ? "_blank" : undefined}
             rel={item.external ? "noreferrer" : undefined}
+            data-emoji={item.emoji || undefined}
           >
             {item.label}
           </a>
