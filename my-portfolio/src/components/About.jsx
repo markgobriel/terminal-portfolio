@@ -36,18 +36,21 @@ function About({ paragraphs, status, focusList, id, title, portrait }) {
           </div>
         </div>
         {portrait?.src && (
-          <div className="about-portrait" data-emoji="😍" onClick={handleBurst}>
-            <img src={portrait.src} alt={portrait.alt || "portrait"} />
-            {bursts.map((item) => (
-              <span
-                key={item.id}
-                className="emoji-burst"
-                style={{ "--dx": `${item.dx}px`, "--delay": `${item.delay}s` }}
-                aria-hidden="true"
-              >
-                😍
-              </span>
-            ))}
+          <div className="portrait-wrapper">
+            <div className="about-portrait" data-emoji="😍" onClick={handleBurst}>
+              <img src={portrait.src} alt={portrait.alt || "portrait"} />
+              {bursts.map((item) => (
+                <span
+                  key={item.id}
+                  className="emoji-burst"
+                  style={{ "--dx": `${item.dx}px`, "--delay": `${item.delay}s` }}
+                  aria-hidden="true"
+                >
+                  😍
+                </span>
+              ))}
+            </div>
+            <span className="portrait-hint">click on my picture for a surprise!</span>
           </div>
         )}
       </div>
