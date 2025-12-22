@@ -130,6 +130,7 @@ function App() {
           id="about"
           title={content.ui.headings.about}
           portrait={content.portrait}
+          values={content.values}
         />
       ),
     },

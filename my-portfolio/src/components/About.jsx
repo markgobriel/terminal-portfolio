@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./About.css";
 
-function About({ paragraphs, status, focusList, id, title, portrait }) {
+function About({ paragraphs, status, focusList, values = [], id, title, portrait }) {
   const [bursts, setBursts] = useState([]);
 
   const handleBurst = () => {
@@ -29,11 +29,22 @@ function About({ paragraphs, status, focusList, id, title, portrait }) {
             <span className="pulse" aria-hidden="true"></span>
             {status}
           </div>
+          <div className="mini-header">my top 5 skills</div>
           <div className="focus-list">
             {focusList.map((item) => (
               <span key={item}>{item}</span>
             ))}
           </div>
+          {values.length ? (
+            <div className="core-values">
+              <div className="core-values__title">my core values</div>
+              <div className="core-values__tags">
+                {values.map((value) => (
+                  <span key={value}>{value}</span>
+                ))}
+              </div>
+            </div>
+          ) : null}
         </div>
         {portrait?.src && (
           <div className="portrait-wrapper">

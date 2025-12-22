@@ -87,6 +87,40 @@
   background: #fff;
 }
 
+.mini-header {
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  text-transform: lowercase;
+  color: var(--muted);
+  margin-top: 8px;
+}
+
+.core-values {
+  display: grid;
+  gap: 6px;
+  margin-top: 10px;
+}
+
+.core-values__title {
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  font-size: 14px;
+}
+
+.core-values__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.core-values__tags span {
+  padding: 6px 10px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: #fff;
+  font-size: 13px;
+}
+
 .emoji-burst {
   position: absolute;
   bottom: 8px;

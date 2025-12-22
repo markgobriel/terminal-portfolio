@@ -175,14 +175,37 @@
 }
 
 .hero-italic {
-  font-family: "Apple Garamond", "Times New Roman", serif;
+  font-family: "Libre Baskerville", serif;
   font-style: italic;
   letter-spacing: -0.04em;
   font-weight: 600;
+  position: relative;
+  display: inline-block;
+  min-width: 7ch;
+  height: 1em;
+  vertical-align: baseline;
+  animation: fontFamilyCycle 3.5s steps(1) infinite;
 }
 
 .typewriter {
   position: relative;
+}
+
+@keyframes fontFamilyCycle {
+  0% {
+    font-family: "Libre Baskerville", serif;
+  }
+  33% {
+    font-family: "Merriweather", serif;
+  }
+  66%,
+  100% {
+    font-family: "DM Serif Display", serif;
+  }
+}
+
+.hero-italic {
+  animation: fontFamilyCycle 3.5s steps(1) infinite;
 }
 
 .typewriter-caret {
