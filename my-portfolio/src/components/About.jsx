@@ -20,7 +20,7 @@ function About({ paragraphs, status, focusList, id, title, portrait }) {
           </div>
         </div>
         {portrait?.src && (
-          <div className="about-portrait">
+          <div className="about-portrait" data-emoji="🐐">
             <img src={portrait.src} alt={portrait.alt || "portrait"} />
           </div>
         )}
