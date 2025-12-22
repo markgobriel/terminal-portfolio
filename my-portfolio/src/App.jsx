@@ -193,7 +193,7 @@ function App() {
           taglineTokens={content.taglineTokens}
           meta={meta}
           portrait={content.portrait}
-          resumeHref={resumeHref}
+        resumeHref={resumeHref}
         resumeLabel={content.ui.resumeTop}
         eyebrowLabel={content.ui.eyebrow}
         eyebrowTouchLabel={content.ui.eyebrowTouch}
@@ -201,7 +201,17 @@ function App() {
       />
         <div className="expand-bar">
           <button className="expand-toggle" type="button" onClick={() => setAllSections(!allOpen)}>
-            {allOpen ? content.ui.collapseAll || "collapse all" : content.ui.expandAll || "expand all"}
+            <span>{allOpen ? content.ui.collapseAll || "collapse all" : content.ui.expandAll || "expand all"}</span>
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path
+                d="M6 10.5 12 16l6-5.5M12 7v9"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.6"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
           </button>
         </div>
         <main className="app-grid">
