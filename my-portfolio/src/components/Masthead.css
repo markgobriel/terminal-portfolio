@@ -264,10 +264,13 @@
 @media (max-width: 960px) {
   .masthead {
     grid-template-columns: 1fr;
+    min-height: auto;
   }
 
   .masthead__side {
     align-items: flex-start;
+    transform: translateY(0);
+    gap: 10px;
   }
 
   .meta-item {
@@ -282,5 +285,48 @@
 
   .portrait-frame {
     width: min(240px, 100%);
+  }
+}
+
+@media (max-width: 640px) {
+  .masthead {
+    gap: 18px;
+    padding-top: 6px;
+    padding-bottom: 12px;
+    min-height: auto;
+  }
+
+  .masthead__intro {
+    gap: 10px;
+  }
+
+  .masthead h1 {
+    font-size: clamp(3rem, 10vw, 4.8rem);
+    line-height: 0.92;
+  }
+
+  .hero-line {
+    white-space: normal;
+  }
+
+  .tagline {
+    margin-top: 18px;
+    font-size: 0.98rem;
+    max-width: 100%;
+  }
+
+  .masthead__side {
+    gap: 8px;
+    transform: translateY(0);
+  }
+
+  .meta {
+    font-size: 13px;
+    gap: 10px;
+  }
+
+  .meta-item {
+    gap: 8px;
+    padding: 8px 0;
   }
 }

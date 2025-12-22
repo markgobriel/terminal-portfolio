@@ -41,7 +41,7 @@ const portfolio = {
     heroEmphasis: "full stack",
     heroLine2: "products.",
     tagline:
-      "hey there, i'm mark gobriel, and i'm a computer science student at the <span class=\"tagline-link-inline\"><img src=\"https://upload.wikimedia.org/wikipedia/en/thumb/0/04/Utoronto_coa.svg/1200px-Utoronto_coa.svg.png\" alt=\"uoft\" class=\"tagline-logo\" /><a href=\"https://www.utoronto.ca\" target=\"_blank\" rel=\"noreferrer\">university of toronto</a></span>",
+      "hey there, i'm mark gobriel, and i study computer science at the <span class=\"tagline-link-inline\"><img src=\"https://upload.wikimedia.org/wikipedia/en/thumb/0/04/Utoronto_coa.svg/1200px-Utoronto_coa.svg.png\" alt=\"uoft\" class=\"tagline-logo\" /><a href=\"https://www.utoronto.ca\" target=\"_blank\" rel=\"noreferrer\">university of toronto</a></span>",
     taglineTokens: [],
     portrait: {
       src: "/portrait.jpg",
