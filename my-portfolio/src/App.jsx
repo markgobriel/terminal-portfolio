@@ -31,7 +31,19 @@ function App() {
     content.contact.find((c) => c.label === "resume")?.href ||
     "/resume.pdf";
   const meta = [
-    { label: content.ui.meta.location, value: content.location },
+    {
+      label: content.ui.meta.location,
+      value: (
+        <a
+          href="https://www.google.com/maps?q=Toronto"
+          target="_blank"
+          rel="noreferrer"
+          className="meta-link"
+        >
+          {content.location}
+        </a>
+      ),
+    },
     { label: content.ui.meta.focus, value: content.focus },
     { label: content.ui.meta.currently, value: content.currently },
   ];
