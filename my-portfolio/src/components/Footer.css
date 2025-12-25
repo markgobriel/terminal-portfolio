@@ -85,13 +85,18 @@
 
 @media (max-width: 900px) {
   .footer {
-    gap: 10px;
-    padding: 14px 5vw 16px 0;
+    position: static;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 20px 5vw 28px;
+    margin-top: 28px;
   }
 
   .footer-meta {
-    gap: 12px;
-    align-items: baseline;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
     flex-wrap: nowrap;
   }
 
@@ -102,5 +107,50 @@
   .footer-pages a,
   .footer-lang button {
     font-size: 11px;
+  }
+
+  .footer-group {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+
+  .footer-links,
+  .footer-pages,
+  .footer-lang {
+    flex-wrap: wrap;
+    row-gap: 6px;
+  }
+}
+
+@media (max-width: 640px) {
+  .footer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 16px 6vw 18px;
+  }
+
+  .footer-meta {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+    width: 100%;
+  }
+
+  .footer-group {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    width: 100%;
+  }
+
+  .footer-links,
+  .footer-pages {
+    flex-wrap: wrap;
+  }
+
+  .footer-motto {
+    margin-top: 4px;
   }
 }
