@@ -55,7 +55,7 @@ const fallbackIcon = (label) => (
   </svg>
 );
 
-function SkillIcon({ iconId, iconComponent, iconImg, name }) {
+export function SkillIcon({ iconId, iconComponent, iconImg, name }) {
   const IconComp = iconId ? Devicons[iconId] : undefined;
   const custom = iconComponent ? customSvgs[iconComponent] : undefined;
   const initials = name.replace(/[^a-zA-Z]/g, "").slice(0, 3).toLowerCase() || "app";

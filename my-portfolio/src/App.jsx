@@ -1,73 +1,75 @@
 import "./App.css";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/react";
 import portfolio from "./data/portfolio";
 import Masthead from "./components/Masthead";
-import About from "./components/About";
-import Education from "./components/Education";
-import Experience from "./components/Experience";
-import Work from "./components/Work";
-import Notes from "./components/Notes";
-import Skills from "./components/Skills";
-import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import Cursor from "./components/Cursor";
+import AboutPage from "./pages/AboutPage";
+import WorkPage from "./pages/WorkPage";
 
 const detectLangFromPath = () => {
   if (typeof window === "undefined") return "en";
   return window.location.pathname.startsWith("/fr") ? "fr" : "en";
 };
 
+const detectRouteFromPath = () => {
+  if (typeof window === "undefined") return "home";
+  const rawPath = window.location.pathname.replace(/\/+$/, "") || "/";
+  const path = rawPath.replace(/^\/(en|fr)(?=\/|$)/, "");
+  if (path === "" || path === "/") return "home";
+  if (path.startsWith("/about")) return "about";
+  if (path.startsWith("/work")) return "work";
+  return "home";
+};
+
+const getLangPrefix = () => {
+  if (typeof window === "undefined") return "";
+  const path = window.location.pathname;
+  if (path.startsWith("/fr")) return "/fr";
+  if (path.startsWith("/en")) return "/en";
+  return "";
+};
+
 function App() {
   const [lang, setLang] = useState(detectLangFromPath);
+  const route = detectRouteFromPath();
+  const isAboutPage = route === "about";
+  const isWorkPage = route === "work";
+  const langPrefix = getLangPrefix();
+  const withLangPrefix = (path = "/") => {
+    if (path === "/") return langPrefix || "/";
+    return `${langPrefix}${path}`;
+  };
+  const homeHref = withLangPrefix("/");
+  const workHref = withLangPrefix("/work");
   const [nameHover, setNameHover] = useState(false);
   const [eduHover, setEduHover] = useState(false);
   const nameHoverImage = "https://i.giphy.com/media/3NtY188QaxDdC/giphy.gif";
   const eduHoverImage = "https://upload.wikimedia.org/wikipedia/en/thumb/0/04/Utoronto_coa.svg/1200px-Utoronto_coa.svg.png";
   const content = portfolio[lang] || portfolio.en;
+  const homeUi = content.ui?.home || {};
   const resumeHref =
     content.contact.find((c) => c.label === (lang === "fr" ? "cv" : "resume"))?.href ||
     content.contact.find((c) => c.label === "resume")?.href ||
     "/resume.pdf";
-  const meta = [
-    {
-      label: content.ui.meta.location,
-      value: (
-        <a
-          href="https://www.google.com/maps?q=Toronto"
-          target="_blank"
-          rel="noreferrer"
-          className="meta-link"
-        >
-          {content.location}
-        </a>
-      ),
-    },
-    { label: content.ui.meta.focus, value: content.focus },
-    { label: content.ui.meta.currently, value: content.currently },
-  ];
-  const sectionOrder = ["about", "experience", "education", "projects", "skills", "certifications", "contact"];
-  const [openSections, setOpenSections] = useState(() =>
-    sectionOrder.reduce((acc, id) => ({ ...acc, [id]: false }), {})
-  );
-
-  const sections = [
-    { id: "home", label: content.ui.nav.home, emoji: "🏠" },
-    { id: "about", label: content.ui.nav.about, emoji: "👤" },
-    { id: "experience", label: content.ui.nav.experience, emoji: "💼" },
-    { id: "education", label: content.ui.nav.education, emoji: "🎓" },
-    { id: "projects", label: content.ui.nav.projects, emoji: "🛠️" },
-    { id: "skills", label: content.ui.nav.skills, emoji: "🧠" },
-    { id: "certifications", label: content.ui.nav.certifications, emoji: "📜" },
-    { id: "contact", label: content.ui.nav.contact, emoji: "✉️" },
-    { href: resumeHref, label: content.ui.nav.resume, external: true, emoji: "📄" },
-  ];
-  const navEmojiMap = sections.reduce((acc, item) => {
-    if (item.id && item.emoji) acc[item.id] = item.emoji;
-    return acc;
-  }, {});
-  const sectionsAnchorRef = useRef(null);
+  const meta = (content.homeMeta || []).map((item) => ({
+    label: item.label,
+    value: item.href ? (
+      <a href={item.href} target="_blank" rel="noreferrer" className="meta-link">
+        {item.value}
+      </a>
+    ) : (
+      item.value
+    ),
+  }));
+  const selectedWorks = content.selectedWorks || [];
+  const timelineTitle = content.timeline?.title || homeUi.timeline || "timeline";
+  const timelineItems = content.timeline?.items || [];
+  const selectedWorksTitle = homeUi.selectedWorks || "selected works";
+  const selectedWorkAria = homeUi.selectedWorkAria || "open";
+  const viewAllLabel = homeUi.viewAllWork || "view all my work";
 
   const switchLanguage = (code) => {
     if (code === lang) return;
@@ -108,148 +110,161 @@ function App() {
     return () => observer.disconnect();
   }, [lang]);
 
-  const toggleSection = (id) => {
-    setOpenSections((prev) => ({ ...prev, [id]: !prev[id] }));
-  };
+  useEffect(() => {
+    const chips = Array.from(document.querySelectorAll(".skill-chip"));
+    if (!chips.length) return undefined;
 
-  const allOpen = sectionOrder.every((id) => openSections[id]);
+    const seeds = chips.map((_, idx) => ({
+      phaseX: Math.random() * Math.PI * 2 + idx * 0.4,
+      phaseY: Math.random() * Math.PI * 2 + idx * 0.6,
+    }));
 
-  const setAllSections = (value) => {
-    setOpenSections(sectionOrder.reduce((acc, id) => ({ ...acc, [id]: value }), {}));
-  };
+    let mouse = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
+    let frame;
 
-  const renderedSections = [
-    {
-      id: "about",
-      title: content.ui.headings.about,
-      body: (
-        <About
-          paragraphs={content.about}
-          status={content.status}
-          focusList={content.focusList}
-          id="about"
-          title={content.ui.headings.about}
-          portrait={content.portrait}
-          values={content.values}
-        />
-      ),
-    },
-    {
-      id: "experience",
-      title: content.ui.headings.experience,
-      body: <Experience items={content.experience} id="experience" title={content.ui.headings.experience} />,
-    },
-    {
-      id: "education",
-      title: content.ui.headings.education,
-      body: (
-        <Education
-          items={content.education}
-          id="education"
-          onHoverChange={setEduHover}
-          title={content.ui.headings.education}
-        />
-      ),
-    },
-    {
-      id: "projects",
-      title: content.ui.headings.projects,
-      body: <Work items={content.work} id="projects" title={content.ui.headings.projects} />,
-    },
-    {
-      id: "skills",
-      title: content.ui.headings.skills,
-      body: (
-        <Skills
-          items={content.skills}
-          id="skills"
-          title={content.ui.headings.skills}
-          groupLabels={content.ui.skillGroups}
-        />
-      ),
-    },
-    {
-      id: "certifications",
-      title: content.ui.headings.certifications,
-      body: <Notes items={content.notes} id="certifications" title={content.ui.headings.certifications} />,
-    },
-    {
-      id: "contact",
-      title: content.ui.headings.contact,
-      body: <Contact items={content.contact} id="contact" title={content.ui.headings.contact} />,
-    },
-  ];
+    const render = (ts) => {
+      const t = ts || 0;
+      chips.forEach((chip, idx) => {
+        const rect = chip.getBoundingClientRect();
+        const cx = rect.left + rect.width / 2;
+        const cy = rect.top + rect.height / 2;
+        const vx = cx - mouse.x;
+        const vy = cy - mouse.y;
+        const dist = Math.max(20, Math.hypot(vx, vy));
+        const repel = Math.min(200 / dist, 7);
+        const repelX = (vx / dist) * repel * 18;
+        const repelY = (vy / dist) * repel * 18;
+
+        const phase = seeds[idx];
+        const oscX = Math.sin(t / 700 + phase.phaseX) * 10;
+        const oscY = Math.cos(t / 850 + phase.phaseY) * 8;
+
+        chip.style.transform = `translate(${oscX + repelX}px, ${oscY + repelY}px)`;
+      });
+      frame = requestAnimationFrame(render);
+    };
+
+    const onMove = (e) => {
+      mouse = { x: e.clientX, y: e.clientY };
+    };
+
+    frame = requestAnimationFrame(render);
+    window.addEventListener("mousemove", onMove, { passive: true });
+
+    return () => {
+      cancelAnimationFrame(frame);
+      window.removeEventListener("mousemove", onMove);
+    };
+  }, [lang]);
+
+  
 
   return (
     <>
       <div id="home" aria-hidden="true"></div>
       <div className="app-shell">
         <Cursor nameHover={nameHover} nameHoverImage={nameHoverImage} eduHover={eduHover} eduHoverImage={eduHoverImage} />
-        <Masthead
-          name={content.name}
-          heroLine1={content.heroLine1}
-          heroLine2={content.heroLine2}
-          heroEmphasis={content.heroEmphasis}
-          tagline={content.tagline}
-          taglineTokens={content.taglineTokens}
-          meta={meta}
-          portrait={content.portrait}
-        resumeHref={resumeHref}
-        resumeLabel={content.ui.resumeTop}
-        eyebrowLabel={content.ui.eyebrow}
-        eyebrowTouchLabel={content.ui.eyebrowTouch}
-        onNameHover={setNameHover}
-      />
-        <div className="expand-bar">
-          <button className="expand-toggle" type="button" onClick={() => setAllSections(!allOpen)}>
-            <span>{allOpen ? content.ui.collapseAll || "collapse all" : content.ui.expandAll || "expand all"}</span>
-            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-              <path
-                d="M6 10.5 12 16l6-5.5M12 7v9"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="1.6"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
-          </button>
-        </div>
-        <main className="app-grid">
-          {renderedSections.map((section) => (
-            <div className="section-block" id={section.id} key={section.id} data-section={section.id}>
-              <button
-                className="section-header"
-                onClick={() => toggleSection(section.id)}
-                aria-expanded={openSections[section.id]}
-                data-emoji={navEmojiMap[section.id] || undefined}
-              >
-                <span className="section-title">{section.title}</span>
-                <span className={`section-arrow ${openSections[section.id] ? "open" : ""}`} aria-hidden="true">
-                  <svg viewBox="0 0 24 24" role="presentation">
-                    <path
-                      d="M6 9.5 12 15l6-5.5"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="1.8"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                </span>
-              </button>
-              <div className={`section-body ${openSections[section.id] ? "open" : "closed"}`}>
-                {section.body}
+        {isAboutPage ? (
+          <AboutPage content={content} homeHref={homeHref} />
+        ) : isWorkPage ? (
+          <WorkPage content={content} homeHref={homeHref} />
+        ) : (
+          <>
+            <Masthead
+              name={content.name}
+              heroLine1={content.heroLine1}
+              heroLine2={content.heroLine2}
+              heroEmphasis={content.heroEmphasis}
+              tagline={content.tagline}
+              taglineTokens={content.taglineTokens}
+              meta={meta}
+              portrait={content.portrait}
+              resumeHref={resumeHref}
+              resumeLabel={content.ui.resumeTop}
+              eyebrowLabel={content.ui.eyebrow}
+              eyebrowTouchLabel={content.ui.eyebrowTouch}
+              onNameHover={setNameHover}
+            />
+            <section className="selected-works" aria-label={selectedWorksTitle}>
+              <div className="selected-works-head">
+                <h3>{selectedWorksTitle}</h3>
               </div>
-            </div>
-          ))}
-        </main>
+              <div className="selected-works-list">
+                {selectedWorks.map((item) => (
+                  <a
+                    className="selected-work-row"
+                    key={item.title}
+                    href={item.href}
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label={`${selectedWorkAria} ${item.title}`}
+                  >
+                    <div className="sw-row-text">
+                      <div className="sw-row-main">
+                        <span className="sw-title">{item.title}</span>
+                        <span className="sw-dash">—</span>
+                        <span className="sw-summary">{item.summary}</span>
+                      </div>
+                      {item.skills?.length ? (
+                        <div className="sw-skills">({item.skills.join(" · ").toLowerCase()})</div>
+                      ) : null}
+                    </div>
+                  </a>
+                ))}
+              </div>
+              <a className="expand-toggle view-all-work" href={workHref}>
+                <span>{viewAllLabel}</span>
+                <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                  <path
+                    d="M6 10.5 12 16l6-5.5M12 7v9"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="1.6"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </a>
+            </section>
+            <section className="timeline" aria-label={timelineTitle}>
+              <div className="timeline-head">
+                <h3>{timelineTitle}</h3>
+              </div>
+              <div className="timeline-list">
+                {timelineItems.map((item, index) => {
+                  const isLeft = index % 2 === 0;
+                  const showYear = index === 0 || item.year !== timelineItems[index - 1]?.year;
+                  return (
+                    <div className={`timeline-item ${isLeft ? 'timeline-item--left' : 'timeline-item--right'}`} key={`${item.title}-${item.date}`}>
+                      {showYear && <div className="timeline-year">{item.year}</div>}
+                      <span className="timeline-dot" aria-hidden="true"></span>
+                      <div className="timeline-content">
+                        <div className="timeline-row">
+                          {item.href ? (
+                            <a className="timeline-title" href={item.href} target="_blank" rel="noreferrer">
+                              {item.title}
+                            </a>
+                          ) : (
+                            <span className="timeline-title">{item.title}</span>
+                          )}
+                          <span className="timeline-date">{item.date}</span>
+                        </div>
+                        {item.detail ? <div className="timeline-detail">{item.detail}</div> : null}
+                        {item.description ? <div className="timeline-description">{item.description}</div> : null}
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </section>
+          </>
+        )}
         <Footer
-          updated={content.footer.updated}
           motto={content.footer.motto}
           lang={lang}
           onLangChange={switchLanguage}
-          navLabel={content.ui.nav.resume}
+          labels={content.ui?.footer}
+          linkPrefix={langPrefix}
         />
         <Analytics />
         <SpeedInsights />
