@@ -30,13 +30,42 @@ const portfolio = {
         skills: "skills",
         contact: "contact",
       },
-      meta: {
-        location: "location",
-        focus: "focus",
-        currently: "currently",
+      home: {
+        selectedWorks: "selected works",
+        viewAllWork: "view all my work",
+        timeline: "timeline",
+        selectedWorkAria: "open",
       },
+      aboutPage: {
+        title: "about me",
+        skills: "my skills",
+        values: "my core values",
+        portraitCaption: "me after running my first marathon :)",
+        back: "back to home",
+      },
+      workPage: {
+        title: "work",
+        back: "back to home",
+      },
+      footer: {
+        contact: "contact",
+        pages: "pages",
+        language: "language",
+        email: "email",
+        linkedin: "linkedin",
+        github: "github",
+        resume: "resume",
+        work: "work",
+        about: "about",
+      },
+    meta: {
+      location: "location",
+      focus: "focus",
+      currently: "currently",
+    },
     },
     name: "mark gobriel",
+    educationStart: "start date tbd",
     heroLine1: "i build",
     heroEmphasis: "full stack",
     heroLine2: "products.",
@@ -52,7 +81,7 @@ const portfolio = {
     focus: "full-stack development, web applications, ux design",
     currently: "looking for a 12-16 month internship starting may 2026",
     about: [
-      "i'm a full stack developer who loves taking ideas from 0 to shipped, building the polished product people see and the reliable system underneath.",
+      "i'm an aspiring full-stack developer who loves taking ideas from 0 to shipped, building reliable systems with a keen eye for clean, aesthetic interfaces.",
       "on the front end, i'm creative at heart and i care about making things look and feel premium: clean ux, strong visual design, smooth animations, and tiny details that make an interface genuinely enjoyable.",
       "on the back end, i like building dependable systems with clear apis and solid data models that hold up with real users.",
       "when i'm not coding, i'm weight training, training for my next marathon, cooking high-protein meals, or traveling.",
@@ -60,6 +89,77 @@ const portfolio = {
     ],
     status: "open to internships for summer 2026",
     focusList: ["React", "JavaScript", "Java", "Python", "Node.js"],
+    homeMeta: [
+      {
+        label: "location",
+        value: "Toronto, ON",
+        href: "https://www.google.com/maps?q=Toronto",
+      },
+      {
+        label: "recent experience",
+        value: "generated 5 figures in revenue @ motherland.",
+      },
+      {
+        label: "previous",
+        value: "full-stack developer intern @ futura holding group.",
+      },
+    ],
+    selectedWorks: [
+      {
+        title: "rewardly",
+        summary: "b2b full-stack loyalty platform with live rewards flows.",
+        href: "https://github.com/markgobriel/rewardly",
+        skills: ["react", "vite", "node.js", "express", "prisma", "sqlite"],
+      },
+      {
+        title: "dormigo",
+        summary: "renter + roommate matching interface with realtime filtering.",
+        href: "https://github.com/nathancmaniego/deerhacks-iv",
+        skills: ["react", "tailwindcss", "postgresql", "fastapi", "python"],
+      },
+      {
+        title: "personal portfolio",
+        summary: "this site—playful microinteractions and multi-lang support.",
+        href: "https://github.com/markgobriel/react-portfolio",
+        skills: ["react", "vite", "javascript", "css", "gsap"],
+      },
+    ],
+    timeline: {
+      title: "timeline",
+      items: [
+        {
+          title: "university of colorado",
+          date: "september 2025",
+          detail: "software design as an element of the software development lifecycle",
+          description: "earned certification in advanced development practices.",
+          href: "https://www.coursera.org/account/accomplishments/verify/495TOWMTJK3P",
+          year: 2025,
+        },
+        {
+          title: "full stack developer intern @ futura holding group",
+          date: "may 2025 – august 2025",
+          detail: "toronto, on",
+          description:
+            "built and shipped the futura art gallery foundation site with custom wordpress theme and reusable ui components.",
+          year: 2025,
+        },
+        {
+          title: "ceo & founder @ motherland clothing",
+          date: "february 2024 – present",
+          detail: "mississauga, on",
+          description:
+            "built production shopify storefront; implemented cart recovery automations recovering ~40% of abandoned carts.",
+          year: 2024,
+        },
+        {
+          title: "started computer science @ university of toronto",
+          date: "september 2023",
+          detail: "toronto, on",
+          description: "honours bachelor of science, computer science (minor in business).",
+          year: 2023,
+        },
+      ],
+    },
     education: [
       {
         school: "University of Toronto",
@@ -107,6 +207,14 @@ const portfolio = {
           "rental listing aggregator with roommate matching built for a university hackathon.",
         stack: ["React", "Vite", "Tailwind CSS", "FastAPI", "PostgreSQL"],
         link: "https://github.com/markgobriel",
+      },
+      {
+        title: "Personal Portfolio",
+        type: "web",
+        description:
+          "personal portfolio site with bilingual routing, microinteractions, and a custom layout system.",
+        stack: ["React", "Vite", "JavaScript", "CSS", "GSAP"],
+        link: "https://github.com/markgobriel/react-portfolio",
       },
       {
         title: "Othello Game",
@@ -258,13 +366,42 @@ const portfolio = {
         skills: "compétences",
         contact: "contact",
       },
+      home: {
+        selectedWorks: "projets sélectionnés",
+        viewAllWork: "voir tous mes projets",
+        timeline: "chronologie",
+        selectedWorkAria: "ouvrir",
+      },
+      aboutPage: {
+        title: "à propos",
+        skills: "compétences clés",
+        values: "mes valeurs fondamentales",
+        portraitCaption: "moi après avoir couru mon premier marathon :)",
+        back: "retour accueil",
+      },
+      workPage: {
+        title: "travail",
+        back: "retour accueil",
+      },
       meta: {
         location: "lieu",
         focus: "focus",
         currently: "actuellement",
       },
+      footer: {
+        contact: "contact",
+        pages: "pages",
+        language: "langue",
+        email: "courriel",
+        linkedin: "linkedin",
+        github: "github",
+        resume: "cv",
+        work: "travail",
+        about: "à propos",
+      },
     },
     name: "mark gobriel",
+    educationStart: "date de début à préciser",
     heroLine1: "i build",
     heroEmphasis: "full stack",
     heroLine2: "products.",
@@ -280,7 +417,7 @@ const portfolio = {
     focus: "développement full-stack, applications web, design ux",
     currently: "à la recherche d'un stage de 12-16 mois à partir de mai 2026",
     about: [
-      "je suis développeur full stack et j'aime transformer des idées en produit livré, en construisant à la fois la vitrine soignée et le système fiable qui la soutient.",
+      "je suis un développeur full-stack en devenir qui aime mener des idées de 0 à livraison, en construisant des systèmes fiables avec un œil pour des interfaces propres et esthétiques.",
       "côté front, je suis créatif et je tiens à ce que tout ait un rendu premium : ux propre, design visuel solide, animations fluides et petits détails qui rendent l'interface vraiment agréable.",
       "côté back, j'aime bâtir des systèmes fiables avec des apis claires et des modèles de données solides qui tiennent la charge avec de vrais utilisateurs.",
       "hors code, je fais de la musculation, je prépare mon prochain marathon, je cuisine des plats protéinés, ou je voyage.",
@@ -288,6 +425,77 @@ const portfolio = {
     ],
     status: "disponible pour un stage à l'été 2026",
     focusList: ["React", "JavaScript", "Java", "Python", "Node.js"],
+    homeMeta: [
+      {
+        label: "lieu",
+        value: "Toronto, ON",
+        href: "https://www.google.com/maps?q=Toronto",
+      },
+      {
+        label: "expérience récente",
+        value: "5 chiffres de revenus générés @ motherland.",
+      },
+      {
+        label: "précédent",
+        value: "stagiaire développeur full stack @ futura holding group.",
+      },
+    ],
+    selectedWorks: [
+      {
+        title: "rewardly",
+        summary: "plateforme de fidélité b2b full-stack avec flux de récompenses en direct.",
+        href: "https://github.com/markgobriel/rewardly",
+        skills: ["react", "vite", "node.js", "express", "prisma", "sqlite"],
+      },
+      {
+        title: "dormigo",
+        summary: "interface de recherche + matching de colocs avec filtrage en temps réel.",
+        href: "https://github.com/nathancmaniego/deerhacks-iv",
+        skills: ["react", "tailwindcss", "postgresql", "fastapi", "python"],
+      },
+      {
+        title: "portfolio personnel",
+        summary: "ce site—micro-interactions ludiques et support bilingue.",
+        href: "https://github.com/markgobriel/react-portfolio",
+        skills: ["react", "vite", "javascript", "css", "gsap"],
+      },
+    ],
+    timeline: {
+      title: "chronologie",
+      items: [
+        {
+          title: "université du colorado",
+          date: "septembre 2025",
+          detail: "software design as an element of the software development lifecycle",
+          description: "certification obtenue en pratiques avancées de développement.",
+          href: "https://www.coursera.org/account/accomplishments/verify/495TOWMTJK3P",
+          year: 2025,
+        },
+        {
+          title: "stagiaire développeur full stack @ futura holding group",
+          date: "mai 2025 – août 2025",
+          detail: "toronto, on",
+          description:
+            "livré le site de la futura art gallery foundation avec un thème wordpress léger et des composants ui réutilisables.",
+          year: 2025,
+        },
+        {
+          title: "fondateur & ceo @ motherland clothing",
+          date: "févr 2024 – présent",
+          detail: "mississauga, on",
+          description:
+            "boutique shopify en production; automatisations de relance pour ~40% de paniers récupérés.",
+          year: 2024,
+        },
+        {
+          title: "début informatique à l'université de toronto",
+          date: "septembre 2023",
+          detail: "toronto, on",
+          description: "baccalauréat en informatique (mineure en business).",
+          year: 2023,
+        },
+      ],
+    },
     education: [
       {
         school: "Université de Toronto",
@@ -335,6 +543,14 @@ const portfolio = {
           "agrégateur d'annonces de location avec appariement de colocataires, réalisé pour un hackathon universitaire.",
         stack: ["React", "Vite", "Tailwind CSS", "FastAPI", "PostgreSQL"],
         link: "https://github.com/markgobriel",
+      },
+      {
+        title: "Portfolio personnel",
+        type: "web",
+        description:
+          "site portfolio personnel avec routage bilingue, micro-interactions et mise en page sur mesure.",
+        stack: ["React", "Vite", "JavaScript", "CSS", "GSAP"],
+        link: "https://github.com/markgobriel/react-portfolio",
       },
       {
         title: "Othello Game",

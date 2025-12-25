@@ -1,56 +1,64 @@
 import "./Footer.css";
 
-import { useEffect, useRef, useState } from "react";
-import "./Footer.css";
-
-function Footer({ updated, motto, lang = "en", onLangChange }) {
-  const [open, setOpen] = useState(false);
-  const menuRef = useRef(null);
-
-  useEffect(() => {
-    const handleClick = (event) => {
-      if (!menuRef.current) return;
-      if (!menuRef.current.contains(event.target)) {
-        setOpen(false);
-      }
-    };
-    document.addEventListener("pointerdown", handleClick);
-    return () => document.removeEventListener("pointerdown", handleClick);
-  }, []);
-
+function Footer({ motto = "", lang = "en", onLangChange, labels = {}, linkPrefix = "" }) {
   const selectLang = (code) => {
     onLangChange?.(code);
-    setOpen(false);
+  };
+
+  const {
+    contact = "contact",
+    pages = "pages",
+    language = "language",
+    email = "email",
+    linkedin = "linkedin",
+    github = "github",
+    resume = "resume",
+    work = "work",
+    about = "about",
+  } = labels;
+
+  const buildInternalHref = (path) => {
+    if (!path || path === "/") return linkPrefix || "/";
+    return `${linkPrefix}${path}`;
   };
 
   return (
     <footer className="footer">
-      <span className="footer-left">{updated}</span>
-      <span className="footer-center" aria-hidden="true"></span>
-      <span className="footer-right">{motto}</span>
-      <div className="lang-switch" ref={menuRef}>
-        <button
-          type="button"
-          className="lang-toggle"
-          onClick={() => setOpen((o) => !o)}
-          aria-haspopup="true"
-          aria-expanded={open}
-        >
-          {lang.toUpperCase()}
-          <svg viewBox="0 0 12 12" aria-hidden="true">
-            <path d="M3 5l3 3 3-3" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
-          </svg>
-        </button>
-        {open && (
-          <div className="lang-menu">
+      <div className="footer-meta">
+        <div className="footer-group">
+          <span className="footer-label">{contact}</span>
+          <div className="footer-links">
+            <a href="mailto:markgobriel@gmail.com">{email}</a>
+            <a href="https://linkedin.com/in/markgobriel" target="_blank" rel="noreferrer">
+              {linkedin}
+            </a>
+            <a href="https://github.com/markgobriel" target="_blank" rel="noreferrer">
+              {github}
+            </a>
+            <a href="/Mark_Gobriel_resume.pdf" target="_blank" rel="noreferrer">
+              {resume}
+            </a>
+          </div>
+        </div>
+        <div className="footer-group">
+          <span className="footer-label">{pages}</span>
+          <div className="footer-pages">
+            <a href={buildInternalHref("/work")}>{work}</a>
+            <a href={buildInternalHref("/about")}>{about}</a>
+          </div>
+        </div>
+        <div className="footer-group">
+          <span className="footer-label">{language}</span>
+          <div className="footer-lang" role="group" aria-label={language}>
             <button type="button" className={lang === "en" ? "is-active" : ""} onClick={() => selectLang("en")}>
-              English
+              en
             </button>
             <button type="button" className={lang === "fr" ? "is-active" : ""} onClick={() => selectLang("fr")}>
-              Français
+              fr
             </button>
           </div>
-        )}
+        </div>
+        <div className="footer-motto">{motto}</div>
       </div>
     </footer>
   );

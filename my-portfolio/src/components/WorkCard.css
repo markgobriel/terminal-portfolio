@@ -1,9 +1,9 @@
 .work-card {
   --panel-bg: #fff;
   border-radius: 14px;
-  padding: 18px;
+  padding: 20px;
   display: grid;
-  gap: 10px;
+  gap: 12px;
   position: relative;
   overflow: hidden;
   background:
@@ -20,44 +20,63 @@
   align-items: baseline;
   justify-content: space-between;
   gap: 12px;
-  font-weight: 500;
+  font-weight: 700;
+  color: var(--ink);
+  font-size: 1.15rem;
+}
+
+.work-card__title > div {
+  flex: 1;
+  transition: color 0.2s ease;
 }
 
 .work-card__link {
-  width: 34px;
-  height: 34px;
+  width: 40px;
+  height: 40px;
   border-radius: 10px;
   border: 1px solid var(--line);
   display: grid;
   place-items: center;
   color: var(--muted);
   transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+  flex-shrink: 0;
 }
 
 .work-card__link:hover {
   color: var(--accent);
   border-color: var(--accent);
-  background: var(--accent-soft);
+  background: rgba(91, 75, 255, 0.06);
 }
 
 .work-card__description {
   margin: 0;
+  color: var(--ink);
+  line-height: 1.6;
+  font-size: 0.95rem;
 }
 
 .stack {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
-  font-size: 12px;
+  gap: 10px;
+  font-size: 13px;
   color: var(--muted);
 }
 
 .stack span {
   border: 1px solid var(--line);
-  padding: 4px 8px;
-  border-radius: 999px;
+  padding: 6px 10px;
+  border-radius: 6px;
   background: var(--paper);
+  transition: all 0.2s ease;
+  cursor: default;
 }
+
+.stack span:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
 .work-card:hover {
   background-position: center, 100% 0%;
   box-shadow: 0 18px 42px rgba(20, 20, 39, 0.16), 0 0 0 1px rgba(91, 75, 255, 0.14);
@@ -72,9 +91,12 @@
   .work-card__title {
     flex-direction: column;
     align-items: flex-start;
+    gap: 10px;
   }
 
   .work-card__link {
     align-self: flex-start;
+    width: 36px;
+    height: 36px;
   }
 }

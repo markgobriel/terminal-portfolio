@@ -1,15 +1,23 @@
 .exp-list {
   display: grid;
-  gap: 12px;
+  gap: 16px;
 }
 
 .exp-card {
-  border: 1px solid var(--line);
+  border: 1px solid rgba(0, 0, 0, 0.06);
   border-radius: 12px;
-  padding: 16px;
-  background: #fff;
+  padding: 18px;
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.2));
   display: grid;
-  gap: 10px;
+  gap: 12px;
+  transition: all 0.3s ease;
+}
+
+.exp-card:hover {
+  background: linear-gradient(145deg, rgba(91, 75, 255, 0.1), rgba(255, 255, 255, 0.6));
+  border-color: rgba(91, 75, 255, 0.25);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+  transform: translateY(-2px);
 }
 
 .exp-top {
@@ -21,13 +29,19 @@
 }
 
 .exp-role {
-  font-weight: 600;
-  font-size: 17px;
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: var(--ink);
+  transition: color 0.2s ease;
+}
+
+.exp-card:hover .exp-role {
+  color: var(--accent);
 }
 
 .exp-org {
   color: var(--muted);
-  font-size: 15px;
+  font-size: 0.95rem;
 }
 
 .exp-meta {
@@ -36,25 +50,28 @@
   align-items: flex-end;
   gap: 6px;
   color: var(--muted);
-  font-size: 14px;
+  font-size: 0.85rem;
   letter-spacing: 0.05em;
 }
 
 .exp-date {
   text-transform: lowercase;
+  color: var(--accent);
+  font-style: italic;
+  font-weight: 500;
 }
 
 .exp-card ul {
   margin: 0;
   padding-left: 18px;
   display: grid;
-  gap: 6px;
+  gap: 8px;
   color: var(--ink);
-  font-size: 15px;
+  font-size: 0.95rem;
 }
 
 .exp-card li {
-  line-height: 1.5;
+  line-height: 1.6;
 }
 
 @media (max-width: 640px) {
