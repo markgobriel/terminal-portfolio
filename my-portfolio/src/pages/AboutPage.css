@@ -91,17 +91,27 @@
 
 .about-page__portrait-callout {
   position: absolute;
-  top: -90px; /* push more above the portrait */
-  right: -120px; /* push more to the right side */
+  top: clamp(-60px, -7vw, -44px);
+  left: 30%;
+  transform: translateX(-25%);
   display: inline-flex;
   align-items: center;
-  gap: 10px;
+  justify-content: flex-end;
+  gap: 8px 12px;
   font-size: 12px;
   letter-spacing: 0.08em;
   text-transform: lowercase;
   color: var(--muted);
-  white-space: nowrap;
+  white-space: normal;
+  text-align: right;
+  max-width: min(260px, 60vw);
+  flex-wrap: wrap;
   z-index: 2;
+}
+
+.about-page__portrait-callout span {
+  display: inline-block;
+  transform: translateX(-200px) translateY(-10px);
 }
 
 .about-page__portrait-arrow {
@@ -110,8 +120,8 @@
   color: var(--ink);
   opacity: 0.85;
   flex-shrink: 0;
-  transform: rotate(-18deg); /* aim arrow toward portrait (down-left) */
-  transform-origin: 90% 50%; /* rotate around near the tail for better aim */
+  transform: scaleX(-1) rotate(-12deg);
+  transform-origin: 10% 50%;
 }
 
 .about-page__details-block p {
@@ -251,6 +261,14 @@
   display: block;
 }
 
+.about-page__portrait-caption {
+  display: none;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: lowercase;
+  color: var(--muted);
+}
+
 .about-page__skills-section {
   display: flex;
   flex-direction: column;
@@ -367,10 +385,13 @@
     gap: 8px;
   }
 
-  /* keep callout visible and positioned nicely on mobile */
   .about-page__portrait-callout {
-    top: -48px;
-    right: 32px;
+    display: none;
+  }
+
+  .about-page__portrait-caption {
+    display: inline-flex;
+    align-self: flex-start;
   }
 }
 

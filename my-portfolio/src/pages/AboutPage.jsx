@@ -87,6 +87,7 @@ function AboutPage({ content, homeHref = "/" }) {
           {content.portrait?.src ? (
             <>
               <div className="about-page__portrait-callout">
+                <span>{portraitCaption}</span>
                 <svg className="about-page__portrait-arrow" viewBox="0 0 140 40" aria-hidden="true">
                   <path
                     d="M132 12 C108 8 92 30 70 28 S36 16 10 30"
@@ -105,11 +106,11 @@ function AboutPage({ content, homeHref = "/" }) {
                     strokeLinejoin="round"
                   />
                 </svg>
-                <span>{portraitCaption}</span>
               </div>
               <div className="about-page__portrait" data-emoji="🐐">
                 <img src={content.portrait.src} alt={content.portrait.alt || "portrait"} />
               </div>
+              <span className="about-page__portrait-caption">({portraitCaption})</span>
             </>
           ) : null}
         </div>
