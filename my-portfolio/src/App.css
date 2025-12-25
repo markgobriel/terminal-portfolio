@@ -411,6 +411,27 @@
   line-height: 0.95;
 }
 
+.selected-works-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.view-all-work--inline {
+  margin-top: 0;
+  text-decoration: none;
+  border-bottom: 1px solid currentColor;
+  padding-bottom: 4px;
+  align-items: baseline;
+  line-height: 1;
+}
+
+.view-all-work--inline svg {
+  align-self: baseline;
+  transform: translateY(0);
+}
+
 .selected-works-list {
   display: flex;
   flex-direction: column;

@@ -26,7 +26,15 @@ function WorkPage({ content, homeHref = "/" }) {
               <div className="work-page__experience-top">
                 <div>
                   <div className="work-page__experience-role">{item.role}</div>
-                  <div className="work-page__experience-org">{item.org}</div>
+                  <div className="work-page__experience-org">
+                    {item.link ? (
+                      <a href={item.link} target="_blank" rel="noreferrer">
+                        {item.org}
+                      </a>
+                    ) : (
+                      item.org
+                    )}
+                  </div>
                 </div>
                 <div className="work-page__experience-meta">
                   <span>{item.location}</span>
@@ -65,7 +73,15 @@ function WorkPage({ content, homeHref = "/" }) {
                   </svg>
                 </a>
               </div>
-              <p className="work-page__project-desc">{item.description}</p>
+              {Array.isArray(item.description) ? (
+                <ul className="work-page__project-list">
+                  {item.description.map((line, idx) => (
+                    <li key={`${item.title}-desc-${idx}`}>{line}</li>
+                  ))}
+                </ul>
+              ) : item.description ? (
+                <p className="work-page__project-desc">{item.description}</p>
+              ) : null}
               {item.stack?.length ? (
                 <div className="work-page__project-stack">({item.stack.join(" · ")})</div>
               ) : null}

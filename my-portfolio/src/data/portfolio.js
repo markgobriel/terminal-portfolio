@@ -44,7 +44,7 @@ const portfolio = {
         back: "back to home",
       },
       workPage: {
-        title: "work",
+        title: "my work",
         back: "back to home",
       },
       footer: {
@@ -176,8 +176,9 @@ const portfolio = {
         date: "may 2025 – aug 2025",
         location: "toronto, on",
         bullets: [
-          "built and shipped the futura art gallery foundation site with a lightweight custom wordpress theme and reusable ui components.",
-          "improved mobile responsiveness, navigation clarity, and load performance; supported an end-to-end purchase flow for buying artwork.",
+          "built and shipped the Futura Art Gallery Foundation website on WordPress using a lightweight custom theme and HTML, CSS & JavaScript to deliver core pages and reusable UI components.",
+          "improved mobile responsiveness, navigation clarity, and load performance by 20%.",
+          "supported the setup of an end-to-end purchase flow so users could buy artwork online.",
         ],
       },
       {
@@ -185,9 +186,12 @@ const portfolio = {
         org: "motherland clothing",
         date: "feb 2024 – present",
         location: "mississauga, on",
+        link: "https://wearmotherland.com",
         bullets: [
-          "built and optimized a production shopify storefront with liquid, javascript, html, and css to create an engaging shopping experience.",
-          "implemented abandoned cart and checkout recovery automations via shopify apis + liquid, recovering ~40% of abandoned carts.",
+          "generated five figures in revenue across three product drops, while also growing brand visibility as a vendor at multiple festivals.",
+          "built and optimized a production Shopify storefront using Liquid, JavaScript, HTML, and CSS, optimizing product placement and creating an engaging and user-friendly shopping experience.",
+          "implemented abandoned cart and checkout recovery automations using Shopify APIs + Liquid, recovering 40% of abandoned carts/checkouts through personalized email flows.",
+          "managed all aspects of brand operations, including marketing, creative direction, photoshoots, design process, and collaboration with overseas manufacturers in China to produce apparel.",
         ],
       },
     ],
@@ -195,16 +199,21 @@ const portfolio = {
       {
         title: "Rewardly",
         type: "full-stack",
-        description:
-          "loyalty rewards web app that lets users earn, track, and redeem points through a clean, responsive ui.",
+        description: [
+          "Built a full-stack loyalty rewards web app that lets users earn and redeem points, with a responsive React frontend bootstrapped with Vite and reusable UI components.",
+          "Designed and implemented REST APIs in Node/Express and persisted data with Prisma ORM + SQLite, supporting end-to-end CRUD workflows.",
+          "Deployed the application and supported a production-ready setup (routing, environment variables, and basic reliability checks).",
+        ],
         stack: ["React", "Vite", "Node.js", "Express.js", "Prisma", "SQLite"],
         link: "https://github.com/markgobriel",
       },
       {
         title: "Dormigo",
         type: "full-stack",
-        description:
-          "rental listing aggregator with roommate matching built for a university hackathon.",
+        description: [
+          "Developed a full-stack web application using React, Vite, and Tailwind CSS for a responsive, component-based front end, with FastAPI and PostgreSQL powering the backend for real-time data management.",
+          "Engineered robust client-side filtering and roommate matching logic to efficiently connect students with compatible rental listings aggregated from Zillow and Toronto Rentals.",
+        ],
         stack: ["React", "Vite", "Tailwind CSS", "FastAPI", "PostgreSQL"],
         link: "https://github.com/markgobriel",
       },
@@ -380,7 +389,7 @@ const portfolio = {
         back: "retour accueil",
       },
       workPage: {
-        title: "travail",
+        title: "mon travail",
         back: "retour accueil",
       },
       meta: {
@@ -512,8 +521,9 @@ const portfolio = {
         date: "mai 2025 – août 2025",
         location: "toronto, on",
         bullets: [
-          "livré le site de la futura art gallery foundation avec un thème wordpress léger et des composants ui réutilisables.",
-          "amélioré la réactivité mobile, la clarté de navigation et les performances; aidé à mettre en place un tunnel d'achat bout en bout.",
+          "livré le site de la Futura Art Gallery Foundation sur WordPress avec un thème personnalisé léger et HTML, CSS & JavaScript pour livrer les pages clés et des composants ui réutilisables.",
+          "amélioré la réactivité mobile, la clarté de navigation et les performances de chargement de 20%.",
+          "aidé à mettre en place un parcours d'achat de bout en bout pour permettre l'achat d'œuvres en ligne.",
         ],
       },
       {
@@ -521,9 +531,12 @@ const portfolio = {
         org: "motherland clothing",
         date: "févr 2024 – présent",
         location: "mississauga, on",
+        link: "https://wearmotherland.com",
         bullets: [
-          "construit et optimisé une boutique shopify en production avec liquid, javascript, html et css pour une expérience d'achat soignée.",
-          "mis en place des relances d'abandon de panier/checkout via les apis shopify + liquid, récupérant ~40% des paniers abandonnés.",
+          "généré cinq chiffres de revenus sur trois lancements produits, tout en augmentant la visibilité de la marque comme exposant lors de plusieurs festivals.",
+          "construit et optimisé une boutique Shopify en production avec Liquid, JavaScript, HTML et CSS, en optimisant le placement des produits et en créant une expérience d'achat engageante et fluide.",
+          "mis en place des automatisations de relance panier/checkout via les apis Shopify + Liquid, récupérant 40% des paniers/checkout abandonnés grâce à des emails personnalisés.",
+          "géré tous les volets de l'opération de la marque : marketing, direction créative, shootings photo, processus de design, et collaboration avec des fabricants à l'étranger en Chine pour produire les vêtements.",
         ],
       },
     ],
@@ -531,16 +544,21 @@ const portfolio = {
       {
         title: "Rewardly",
         type: "full-stack",
-        description:
-          "application de fidélité qui permet de gagner, suivre et utiliser des points via une interface réactive et épurée.",
+        description: [
+          "construit une application de fidélité full-stack permettant de gagner et d'utiliser des points, avec un front React réactif lancé via Vite et des composants UI réutilisables.",
+          "conçu et implémenté des APIs REST en Node/Express et persistance des données avec Prisma ORM + SQLite, couvrant les workflows CRUD de bout en bout.",
+          "déployé l'application et assuré une configuration prête pour la production (routing, variables d'environnement, vérifications de fiabilité de base).",
+        ],
         stack: ["React", "Vite", "Node.js", "Express.js", "Prisma", "SQLite"],
         link: "https://github.com/markgobriel",
       },
       {
         title: "Dormigo",
         type: "full-stack",
-        description:
-          "agrégateur d'annonces de location avec appariement de colocataires, réalisé pour un hackathon universitaire.",
+        description: [
+          "développé une application web full-stack avec React, Vite et Tailwind CSS pour un front réactif et basé sur des composants, avec FastAPI et PostgreSQL pour le back et la gestion des données en temps réel.",
+          "conçu un filtrage robuste côté client et un appariement de colocataires pour relier efficacement les étudiants à des annonces compatibles agrégées depuis Zillow et Toronto Rentals.",
+        ],
         stack: ["React", "Vite", "Tailwind CSS", "FastAPI", "PostgreSQL"],
         link: "https://github.com/markgobriel",
       },

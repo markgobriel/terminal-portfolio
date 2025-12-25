@@ -188,6 +188,19 @@ function App() {
             <section className="selected-works" aria-label={selectedWorksTitle}>
               <div className="selected-works-head">
                 <h3>{selectedWorksTitle}</h3>
+                <a className="expand-toggle view-all-work view-all-work--inline" href={workHref}>
+                  <span>{viewAllLabel}</span>
+                  <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                    <path
+                      d="M4 12h16M14 6l6 6-6 6"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="1.6"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                </a>
               </div>
               <div className="selected-works-list">
                 {selectedWorks.map((item) => (
@@ -212,19 +225,6 @@ function App() {
                   </a>
                 ))}
               </div>
-              <a className="expand-toggle view-all-work" href={workHref}>
-                <span>{viewAllLabel}</span>
-                <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-                  <path
-                    d="M6 10.5 12 16l6-5.5M12 7v9"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="1.6"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              </a>
             </section>
             <section className="timeline" aria-label={timelineTitle}>
               <div className="timeline-head">
