@@ -221,7 +221,7 @@ const portfolio = {
         type: "Java",
         description:
           "java-based othello with human vs human, human vs computer, and human vs random modes demonstrating oop and game logic.",
-        stack: ["Java", "Javadoc"],
+        stack: ["Java", "Javadoc", "JUnit"],
         link: "https://github.com/markgobriel",
       },
       {
